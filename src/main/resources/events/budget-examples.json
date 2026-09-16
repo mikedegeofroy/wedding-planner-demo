@@ -1,0 +1,1696 @@
+[
+  {
+    "key": "pdf-1",
+    "name": "Lake Como · 100 guests",
+    "guests": 100,
+    "source": "BUDGET Wedding Planner EVENTS - Villa Balbiano 2026- Villa Pizzo - 100.pdf",
+    "budgets": [
+      {
+        "scenario": "Villa Balbiano",
+        "priceBasis": "VAT included",
+        "deposit": 35000,
+        "items": [
+          {
+            "article": "Rent of VILLA",
+            "phase": "WEDDING",
+            "details": "VILLA PIZZO 2026: 40.000 EURO for 1 day event (no\naccommodation)\nVILLA BALBIANO 2026:\nThree days/two nights rental with accommodation\nRental fee is 200.000 euro\nSecurity deposit is 35.000 euro fully refundable if no\ndamages\nCheck-in at 10am on the first day\nMusic curfew outside is 9.30pm\nAfterparty ending time is 1am\nLater is available at extra charge 3.000/hour\nCheckout at 9pm on the third day\nUp to 100 guests for an event\n6 Suites of the Main Palazzo is included for\naccommodation up to 12 ppl\nAll the Suites are double\nExtra accommodation is available at extra charge\nMax. capacity for accommodation is up to 30 ppl\nSource value: 200.000 €",
+            "priceState": "QUOTED",
+            "price": 200000
+          },
+          {
+            "article": "Accommodation",
+            "phase": "WEDDING",
+            "details": "Accommodation for guests for 2 nights in the nearby hotel\nTBD\nSource value: 0 €",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Extra costs Villa Balbiano",
+            "phase": "WEDDING",
+            "details": "EXTRAS:\n• Electricity for the main event – €7.500 (it does not\ninclude wiring)\n• Electricity for the additional event/installation days –\n€3.500 (it does not include wiring)\n• Extra hour for setup/dismantling – €3.000\n• Afterparty extra time, - after 1am – €3.000 for the first\nhour then TBC\n• Black Marble toilet inside the Villa for VIP guests –\n€1.000/event + extra toilet attendant\nSERVICES:\n• Toilet attendant €1.500-2.000/event TBC for 2025\n• Security guard for the gate & the after party – €750/\nevent – one for each 40 ppl\nOTHER:\nSwimming pool party furniture rental:\nSUNBEDS – 6 SUNBEDS, 7 UMBRELLAS AND UP TO 17\nSUNCHAIRS – €3.500\nSource value: 20.000 €",
+            "priceState": "QUOTED",
+            "price": 20000
+          },
+          {
+            "article": "Food & Beverage",
+            "phase": "WEDDING",
+            "details": "Aperitif & Dinner (Top Catering from Euro 300 per person\nincluding beverages and wedding cake).\nSource value: 30.000 €",
+            "priceState": "QUOTED",
+            "price": 30000
+          },
+          {
+            "article": "Open bar",
+            "phase": "WEDDING",
+            "details": "Open bar for after dinner party Euro 15 per person per\nhour (3 hours);\nSource value: 4.500 €",
+            "priceState": "QUOTED",
+            "price": 4500
+          },
+          {
+            "article": "Midnight snacks",
+            "phase": "WEDDING",
+            "details": "Midnight snacks: pizza /burgers Euro 15 per person\nSource value: 1.500 €",
+            "priceState": "QUOTED",
+            "price": 1500
+          },
+          {
+            "article": "Staff menu on the wedding day",
+            "phase": "WEDDING",
+            "details": "Meal for the staff on the wedding day (photographer,\nfilmmaker, decorators, musicians, technicians ecc), staff\nmenu from Euro 50 per person\nSource value: 1.500 €",
+            "priceState": "QUOTED",
+            "price": 1500
+          },
+          {
+            "article": "Decoration & Flowers",
+            "phase": "WEDDING",
+            "details": "The detailed estimate will be prepared after the\nconfirmation of the concept\nSource value: 100.000 €",
+            "priceState": "QUOTED",
+            "price": 100000
+          },
+          {
+            "article": "Wedding stationary",
+            "phase": "WEDDING",
+            "details": "Design and production of wedding stationary (place cards,\nmenus) TBD after the confirmation of the wedding concept\nSource value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Rent of additional furniture",
+            "phase": "WEDDING",
+            "details": "Rent of additional furniture for aperitivo or lounge bar\nSource value: 20.000 €",
+            "priceState": "QUOTED",
+            "price": 20000
+          },
+          {
+            "article": "Marquee / Tent",
+            "phase": "WEDDING",
+            "details": "Rent of marquee including logistics and porterage\nSource value: 70.000 €",
+            "priceState": "QUOTED",
+            "price": 70000
+          },
+          {
+            "article": "String band /Cover band",
+            "phase": "WEDDING",
+            "details": "Live music for the ceremony (string duo or quartet for the\nceremony); Music band for the aperitif and dinner\nSource value: 20.000 €",
+            "priceState": "QUOTED",
+            "price": 20000
+          },
+          {
+            "article": "DJ",
+            "phase": "WEDDING",
+            "details": "DJ for after-dinner\nSource value: 1.500 €",
+            "priceState": "QUOTED",
+            "price": 1500
+          },
+          {
+            "article": "Audio system",
+            "phase": "WEDDING",
+            "details": "Sound equipment for ceremony area, dinner area, after\ndinner area (logistic and portage including)\nSource value: 50.000 €",
+            "priceState": "QUOTED",
+            "price": 50000
+          },
+          {
+            "article": "Stage/ dance floor",
+            "phase": "WEDDING",
+            "details": "Stage and dance floor to be defined on request\nSource value: 4.000 €",
+            "priceState": "QUOTED",
+            "price": 4000
+          },
+          {
+            "article": "Light equipment",
+            "phase": "WEDDING",
+            "details": "Additional lightning on request, depend on the wedding\nconcept\nSource value: 30.000 €",
+            "priceState": "QUOTED",
+            "price": 30000
+          },
+          {
+            "article": "Master of ceremony",
+            "phase": "WEDDING",
+            "details": "Master of ceremony\nSource value: 1.500 €",
+            "priceState": "QUOTED",
+            "price": 1500
+          },
+          {
+            "article": "Photo",
+            "phase": "WEDDING",
+            "details": "Top photographer for the wedding day for 10-12 hours\nSource value: 20.000 €",
+            "priceState": "QUOTED",
+            "price": 20000
+          },
+          {
+            "article": "Video",
+            "phase": "WEDDING",
+            "details": "Top Filmmaker for the wedding day for 10-12 hours\nSource value: 15.000 €",
+            "priceState": "QUOTED",
+            "price": 15000
+          },
+          {
+            "article": "Make Up and Hair Stylist",
+            "phase": "WEDDING",
+            "details": "Make up and Hair artist for the bride\nSource value: 1.500 €",
+            "priceState": "QUOTED",
+            "price": 1500
+          },
+          {
+            "article": "Transfer",
+            "phase": "WEDDING",
+            "details": "From/ to hotel to villa on request\nSource value: 15.000 €",
+            "priceState": "QUOTED",
+            "price": 15000
+          },
+          {
+            "article": "Fireworks",
+            "phase": "WEDDING",
+            "details": "Fireworks or pyrotechnical show on request\nSource value: 15.000 €",
+            "priceState": "QUOTED",
+            "price": 15000
+          },
+          {
+            "article": "Rent of the villa for rehearsal dinner",
+            "phase": "WELCOME",
+            "details": "Rent of the villa or of the restaurant for the rehearsal\ndinner\nSource value: 15.000 €",
+            "priceState": "QUOTED",
+            "price": 15000
+          },
+          {
+            "article": "Food & Beverage",
+            "phase": "WELCOME",
+            "details": "The rate for the pizza party is Euro 150 pp\nSource value: 15.000 €",
+            "priceState": "QUOTED",
+            "price": 15000
+          },
+          {
+            "article": "Music equipment",
+            "phase": "WELCOME",
+            "details": "DJ for the side event (TBD music band)\nSource value: 7.000 €",
+            "priceState": "QUOTED",
+            "price": 7000
+          },
+          {
+            "article": "Photo",
+            "phase": "WELCOME",
+            "details": "Top photographer for 3-4 hours\nSource value: 2.000 €",
+            "priceState": "QUOTED",
+            "price": 2000
+          },
+          {
+            "article": "Video",
+            "phase": "WELCOME",
+            "details": "Top Filmmaker for 3-4 hours\nSource value: 2.000 €",
+            "priceState": "QUOTED",
+            "price": 2000
+          },
+          {
+            "article": "Flowers & Decor",
+            "phase": "WELCOME",
+            "details": "Italian style decoration for pizza party TBD on request\nSource value: 20.000 €",
+            "priceState": "QUOTED",
+            "price": 20000
+          },
+          {
+            "article": "Make Up and Hair Stylist",
+            "phase": "WELCOME",
+            "details": "Make up and Hair artist for the bride\nSource value: 1.000 €",
+            "priceState": "QUOTED",
+            "price": 1000
+          },
+          {
+            "article": "Extra",
+            "phase": "WELCOME",
+            "details": "Some extra costs not calculated in the firs estimate (rent\nof the additional furniture, audio system, SIAE tax,\ntransfers etc…)\nSource value: 10.000 €",
+            "priceState": "QUOTED",
+            "price": 10000
+          },
+          {
+            "article": "Wedding planner’s fee for 1 day event",
+            "phase": "PLANNING",
+            "details": "Personal wedding planner online for the whole period of\nthe preparation,\nDesign and concept development of your wedding,\nSelection of wedding venue and side venues,\nSite inspection of location,\nResearch and liaison with all contractors,\nBudget management,\nDeveloping of the decoration concept,\nStationary design,\nSelection of Stylist, make up & hair artist,\nSelection of Photographers and filmmakers,\nSelection of Music company,\nSelection of Catering or restaurants, tasting and\nfinalization of menu,\nTiming planning of the wedding day and side days,\nDetailed timing for suppliers and for the client,\nOrganization of Transfer,\nCoordination of the wedding day.\nWedding planner’s fee for the wedding day - 20.000\neuro + VAT, side event - 10.000 euro, +VAT 22% .\nSource value: 24.400 €",
+            "priceState": "QUOTED",
+            "price": 24400
+          },
+          {
+            "article": "Planning & coordinating of side event",
+            "phase": "PLANNING",
+            "details": "Organization of side event (pizza party or brunch) +\ncoordination - 10.000 euro + VAT 22% /event\nSource value: 12.200 €",
+            "priceState": "QUOTED",
+            "price": 12200
+          },
+          {
+            "article": "Additional costs",
+            "phase": "PLANNING",
+            "details": "Transport & accommodation cost of the agency (2 or 3\nnights)\nSource value: 2.000 €",
+            "priceState": "QUOTED",
+            "price": 2000
+          }
+        ],
+        "expectedTotal": 736600
+      },
+      {
+        "scenario": "Villa Pizzo",
+        "priceBasis": "VAT included",
+        "deposit": 0,
+        "items": [
+          {
+            "article": "Rent of VILLA",
+            "phase": "WEDDING",
+            "details": "VILLA PIZZO 2026: 40.000 EURO for 1 day event (no\naccommodation)\nVILLA BALBIANO 2026:\nThree days/two nights rental with accommodation\nRental fee is 200.000 euro\nSecurity deposit is 35.000 euro fully refundable if no\ndamages\nCheck-in at 10am on the first day\nMusic curfew outside is 9.30pm\nAfterparty ending time is 1am\nLater is available at extra charge 3.000/hour\nCheckout at 9pm on the third day\nUp to 100 guests for an event\n6 Suites of the Main Palazzo is included for\naccommodation up to 12 ppl\nAll the Suites are double\nExtra accommodation is available at extra charge\nMax. capacity for accommodation is up to 30 ppl\nSource value: 40.000 €",
+            "priceState": "QUOTED",
+            "price": 40000
+          },
+          {
+            "article": "Accommodation",
+            "phase": "WEDDING",
+            "details": "Accommodation for guests for 2 nights in the nearby hotel\nTBD\nSource value: 0 €",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Extra costs Villa Balbiano",
+            "phase": "WEDDING",
+            "details": "EXTRAS:\n• Electricity for the main event – €7.500 (it does not\ninclude wiring)\n• Electricity for the additional event/installation days –\n€3.500 (it does not include wiring)\n• Extra hour for setup/dismantling – €3.000\n• Afterparty extra time, - after 1am – €3.000 for the first\nhour then TBC\n• Black Marble toilet inside the Villa for VIP guests –\n€1.000/event + extra toilet attendant\nSERVICES:\n• Toilet attendant €1.500-2.000/event TBC for 2025\n• Security guard for the gate & the after party – €750/\nevent – one for each 40 ppl\nOTHER:\nSwimming pool party furniture rental:\nSUNBEDS – 6 SUNBEDS, 7 UMBRELLAS AND UP TO 17\nSUNCHAIRS – €3.500\nSource value: 0 €",
+            "priceState": "QUOTED",
+            "price": 0
+          },
+          {
+            "article": "Food & Beverage",
+            "phase": "WEDDING",
+            "details": "Aperitif & Dinner (Top Catering from Euro 300 per person\nincluding beverages and wedding cake).\nSource value: 30.000 €",
+            "priceState": "QUOTED",
+            "price": 30000
+          },
+          {
+            "article": "Open bar",
+            "phase": "WEDDING",
+            "details": "Open bar for after dinner party Euro 15 per person per\nhour (3 hours);\nSource value: 4.500 €",
+            "priceState": "QUOTED",
+            "price": 4500
+          },
+          {
+            "article": "Midnight snacks",
+            "phase": "WEDDING",
+            "details": "Midnight snacks: pizza /burgers Euro 15 per person\nSource value: 1.500 €",
+            "priceState": "QUOTED",
+            "price": 1500
+          },
+          {
+            "article": "Staff menu on the wedding day",
+            "phase": "WEDDING",
+            "details": "Meal for the staff on the wedding day (photographer,\nfilmmaker, decorators, musicians, technicians ecc), staff\nmenu from Euro 50 per person\nSource value: 1.500 €",
+            "priceState": "QUOTED",
+            "price": 1500
+          },
+          {
+            "article": "Decoration & Flowers",
+            "phase": "WEDDING",
+            "details": "The detailed estimate will be prepared after the\nconfirmation of the concept\nSource value: 100.000 €",
+            "priceState": "QUOTED",
+            "price": 100000
+          },
+          {
+            "article": "Wedding stationary",
+            "phase": "WEDDING",
+            "details": "Design and production of wedding stationary (place cards,\nmenus) TBD after the confirmation of the wedding concept\nSource value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Rent of additional furniture",
+            "phase": "WEDDING",
+            "details": "Rent of additional furniture for aperitivo or lounge bar\nSource value: 20.000 €",
+            "priceState": "QUOTED",
+            "price": 20000
+          },
+          {
+            "article": "Marquee / Tent",
+            "phase": "WEDDING",
+            "details": "Rent of marquee including logistics and porterage\nSource value: 0 €",
+            "priceState": "QUOTED",
+            "price": 0
+          },
+          {
+            "article": "String band /Cover band",
+            "phase": "WEDDING",
+            "details": "Live music for the ceremony (string duo or quartet for the\nceremony); Music band for the aperitif and dinner\nSource value: 20.000 €",
+            "priceState": "QUOTED",
+            "price": 20000
+          },
+          {
+            "article": "DJ",
+            "phase": "WEDDING",
+            "details": "DJ for after-dinner\nSource value: 1.500 €",
+            "priceState": "QUOTED",
+            "price": 1500
+          },
+          {
+            "article": "Audio system",
+            "phase": "WEDDING",
+            "details": "Sound equipment for ceremony area, dinner area, after\ndinner area (logistic and portage including)\nSource value: 30.000 €",
+            "priceState": "QUOTED",
+            "price": 30000
+          },
+          {
+            "article": "Stage/ dance floor",
+            "phase": "WEDDING",
+            "details": "Stage and dance floor to be defined on request\nSource value: 4.000 €",
+            "priceState": "QUOTED",
+            "price": 4000
+          },
+          {
+            "article": "Light equipment",
+            "phase": "WEDDING",
+            "details": "Additional lightning on request, depend on the wedding\nconcept\nSource value: 30.000 €",
+            "priceState": "QUOTED",
+            "price": 30000
+          },
+          {
+            "article": "Master of ceremony",
+            "phase": "WEDDING",
+            "details": "Master of ceremony\nSource value: 1.500 €",
+            "priceState": "QUOTED",
+            "price": 1500
+          },
+          {
+            "article": "Photo",
+            "phase": "WEDDING",
+            "details": "Top photographer for the wedding day for 10-12 hours\nSource value: 20.000 €",
+            "priceState": "QUOTED",
+            "price": 20000
+          },
+          {
+            "article": "Video",
+            "phase": "WEDDING",
+            "details": "Top Filmmaker for the wedding day for 10-12 hours\nSource value: 15.000 €",
+            "priceState": "QUOTED",
+            "price": 15000
+          },
+          {
+            "article": "Make Up and Hair Stylist",
+            "phase": "WEDDING",
+            "details": "Make up and Hair artist for the bride\nSource value: 1.500 €",
+            "priceState": "QUOTED",
+            "price": 1500
+          },
+          {
+            "article": "Transfer",
+            "phase": "WEDDING",
+            "details": "From/ to hotel to villa on request\nSource value: 15.000 €",
+            "priceState": "QUOTED",
+            "price": 15000
+          },
+          {
+            "article": "Fireworks",
+            "phase": "WEDDING",
+            "details": "Fireworks or pyrotechnical show on request\nSource value: 15.000 €",
+            "priceState": "QUOTED",
+            "price": 15000
+          },
+          {
+            "article": "Rent of the villa for rehearsal dinner",
+            "phase": "WELCOME",
+            "details": "Rent of the villa or of the restaurant for the rehearsal\ndinner\nSource value: 10.000 €",
+            "priceState": "QUOTED",
+            "price": 10000
+          },
+          {
+            "article": "Food & Beverage",
+            "phase": "WELCOME",
+            "details": "The rate for the pizza party is Euro 150 pp\nSource value: 15.000 €",
+            "priceState": "QUOTED",
+            "price": 15000
+          },
+          {
+            "article": "Music equipment",
+            "phase": "WELCOME",
+            "details": "DJ for the side event (TBD music band)\nSource value: 7.000 €",
+            "priceState": "QUOTED",
+            "price": 7000
+          },
+          {
+            "article": "Photo",
+            "phase": "WELCOME",
+            "details": "Top photographer for 3-4 hours\nSource value: 2.000 €",
+            "priceState": "QUOTED",
+            "price": 2000
+          },
+          {
+            "article": "Video",
+            "phase": "WELCOME",
+            "details": "Top Filmmaker for 3-4 hours\nSource value: 2.000 €",
+            "priceState": "QUOTED",
+            "price": 2000
+          },
+          {
+            "article": "Flowers & Decor",
+            "phase": "WELCOME",
+            "details": "Italian style decoration for pizza party TBD on request\nSource value: 20.000 €",
+            "priceState": "QUOTED",
+            "price": 20000
+          },
+          {
+            "article": "Make Up and Hair Stylist",
+            "phase": "WELCOME",
+            "details": "Make up and Hair artist for the bride\nSource value: 1.000 €",
+            "priceState": "QUOTED",
+            "price": 1000
+          },
+          {
+            "article": "Extra",
+            "phase": "WELCOME",
+            "details": "Some extra costs not calculated in the firs estimate (rent\nof the additional furniture, audio system, SIAE tax,\ntransfers etc…)\nSource value: 10.000 €",
+            "priceState": "QUOTED",
+            "price": 10000
+          },
+          {
+            "article": "Wedding planner’s fee for 1 day event",
+            "phase": "PLANNING",
+            "details": "Personal wedding planner online for the whole period of\nthe preparation,\nDesign and concept development of your wedding,\nSelection of wedding venue and side venues,\nSite inspection of location,\nResearch and liaison with all contractors,\nBudget management,\nDeveloping of the decoration concept,\nStationary design,\nSelection of Stylist, make up & hair artist,\nSelection of Photographers and filmmakers,\nSelection of Music company,\nSelection of Catering or restaurants, tasting and\nfinalization of menu,\nTiming planning of the wedding day and side days,\nDetailed timing for suppliers and for the client,\nOrganization of Transfer,\nCoordination of the wedding day.\nWedding planner’s fee for the wedding day - 20.000\neuro + VAT, side event - 10.000 euro, +VAT 22% .\nSource value: 24.400 €",
+            "priceState": "QUOTED",
+            "price": 24400
+          },
+          {
+            "article": "Planning & coordinating of side event",
+            "phase": "PLANNING",
+            "details": "Organization of side event (pizza party or brunch) +\ncoordination - 10.000 euro + VAT 22% /event\nSource value: 12.200 €",
+            "priceState": "QUOTED",
+            "price": 12200
+          },
+          {
+            "article": "Additional costs",
+            "phase": "PLANNING",
+            "details": "Transport & accommodation cost of the agency (2 or 3\nnights)\nSource value: 2.000 €",
+            "priceState": "QUOTED",
+            "price": 2000
+          }
+        ],
+        "expectedTotal": 461600
+      }
+    ]
+  },
+  {
+    "key": "pdf-2",
+    "name": "Lake Como · 75 guests",
+    "guests": 75,
+    "source": "250920 BUDGET -Wedding Planner EVENTS - COMO .pdf",
+    "budgets": [
+      {
+        "scenario": "Villa Erba",
+        "priceBasis": "Amounts as quoted; VAT to confirm",
+        "deposit": 0,
+        "items": [
+          {
+            "article": "Location fee for rental",
+            "phase": "WEDDING",
+            "details": "Villa Erba - 1 day event\nVilla Pizzo - 1 day event\nVilla Balbino: Three days/two nights rental\nwith accommodation\nRental fee is 200.000 euro\nCheck-in at 10am on the first day\nMusic curfew outside is 9.30pm\nAfterparty ending time is 1am\nLater is available at extra charge 3.000/hour\nCheckout at 9pm on the third day\nUp to 100 guests for an event\nDepends on your agreements\nwith villa\nSource value: 28.000 €",
+            "priceState": "QUOTED",
+            "price": 28000
+          },
+          {
+            "article": "Accommodation",
+            "phase": "WEDDING",
+            "details": "Source value: N/A",
+            "priceState": "NOT_REQUIRED",
+            "price": null
+          },
+          {
+            "article": "Extra costs",
+            "phase": "WEDDING",
+            "details": "Electricity generator, cleaning, security, ecc..\nSource value: No",
+            "priceState": "NOT_REQUIRED",
+            "price": null
+          },
+          {
+            "article": "Marquee /tent",
+            "phase": "WEDDING",
+            "details": "semi permanent marquee\nSource value: Not needed",
+            "priceState": "NOT_REQUIRED",
+            "price": null
+          },
+          {
+            "article": "Air conditioning for the marquee",
+            "phase": "WEDDING",
+            "details": "Source value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Accommodation in the hotels for guests",
+            "phase": "WEDDING",
+            "details": "TBD based on chosen venue\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Photographer",
+            "phase": "WEDDING",
+            "details": "TOP Fotographer for 1 day\nFrom euro 15.000 to 80.000\nSource value: 35.000 €",
+            "priceState": "QUOTED",
+            "price": 35000
+          },
+          {
+            "article": "Videographer",
+            "phase": "WEDDING",
+            "details": "TOP Filmmaker for 1 day\nFrom euro 15.000 to 80.000\nSource value: 35.000 €",
+            "priceState": "QUOTED",
+            "price": 35000
+          },
+          {
+            "article": "Stylist Muah",
+            "phase": "WEDDING",
+            "details": "TOP Stylist for Bride with touch up services for\nbride\nSource value: 3.000 €",
+            "priceState": "QUOTED",
+            "price": 3000
+          },
+          {
+            "article": "Banqueting",
+            "phase": "WEDDING",
+            "details": "Wedding reception including aperitif with finger\nfood, tempura, corners, 3 courses dinner, wines\nand toast, price starts from 300 Euro per person\nMichelin-starred chef to be\ncalculated separately\nSource value: 22.500 €",
+            "priceState": "QUOTED",
+            "price": 22500
+          },
+          {
+            "article": "Welcome drink",
+            "phase": "WEDDING",
+            "details": "10 per person, pre ceremony welcome drink\nSource value: 750 €",
+            "priceState": "QUOTED",
+            "price": 750
+          },
+          {
+            "article": "Open bar",
+            "phase": "WEDDING",
+            "details": "Open bar - Classic cocktail and premium brands -\n50 euro per person per hour;\ncalculation for 6 hours\nSource value: 22.500 €",
+            "priceState": "QUOTED",
+            "price": 22500
+          },
+          {
+            "article": "Midnight snacks",
+            "phase": "WEDDING",
+            "details": "euro 15 per person\nSource value: 1.125 €",
+            "priceState": "QUOTED",
+            "price": 1125
+          },
+          {
+            "article": "Dinner for personal",
+            "phase": "WEDDING",
+            "details": "euro 70 per person/ TBD the number of staff\ncalculation for 40 people of\nstaff ( photographer ,\nfilmmakers, coordinators,\nmusicians, technicians audio\nand lights)\nSource value: 2.800 €",
+            "priceState": "QUOTED",
+            "price": 2800
+          },
+          {
+            "article": "Designed wedding cake",
+            "phase": "WEDDING",
+            "details": "From euro 2500 for customized design of wedding\ncake\nSource value: 2.500 €",
+            "priceState": "QUOTED",
+            "price": 2500
+          },
+          {
+            "article": "Master of ceremony / officiant for symbolic ceremony",
+            "phase": "WEDDING",
+            "details": "Source value: 2.500 €",
+            "priceState": "QUOTED",
+            "price": 2500
+          },
+          {
+            "article": "Decoration / Flowers for the wedding day",
+            "phase": "WEDDING",
+            "details": "TBD the concept (price includes logistic,\nmountain, dismounting, floristic materials and\nconstructions and flowers)\nStarting from euro 100.000\nSource value: 200.000 €",
+            "priceState": "QUOTED",
+            "price": 200000
+          },
+          {
+            "article": "Rentals of furniture for ceremony, aperitif, dinner & after party and other extra furniture",
+            "phase": "WEDDING",
+            "details": "special tableware, furniture for ceremony/dinner/\naperitif\nSource value: 40.000 €",
+            "priceState": "QUOTED",
+            "price": 40000
+          },
+          {
+            "article": "Other design elements",
+            "phase": "WEDDING",
+            "details": "Customised details\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Wedding stationary",
+            "phase": "WEDDING",
+            "details": "Invitations, rsvp and others cards\nSource value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Wedding stationary",
+            "phase": "WEDDING",
+            "details": "Menu, place cards\nSource value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Music for ceremony",
+            "phase": "WEDDING",
+            "details": "String trio o quartet for example\nSource value: 2.500 €",
+            "priceState": "QUOTED",
+            "price": 2500
+          },
+          {
+            "article": "Music for aperitif and/or dinner",
+            "phase": "WEDDING",
+            "details": "Cover band including transfer and accommodation\ncosts\nFamous singers will be\ncalculated separately\nSource value: 25.000 €",
+            "priceState": "QUOTED",
+            "price": 25000
+          },
+          {
+            "article": "DJ",
+            "phase": "WEDDING",
+            "details": "After dinner\nSource value: 1.500 €",
+            "priceState": "QUOTED",
+            "price": 1500
+          },
+          {
+            "article": "Audio system / equipment for all areas/ musicians",
+            "phase": "WEDDING",
+            "details": "Respecting all musicians tech riders and venues\nrules\nSource value: 40.000 €",
+            "priceState": "QUOTED",
+            "price": 40000
+          },
+          {
+            "article": "SIAE music tax",
+            "phase": "WEDDING",
+            "details": "Source value: 400 €",
+            "priceState": "QUOTED",
+            "price": 400
+          },
+          {
+            "article": "Aisle and podium in ceremony area",
+            "phase": "WEDDING",
+            "details": "TBD design\nSource value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Stage/ dance floor dinner or after party",
+            "phase": "WEDDING",
+            "details": "TBD design\nSource value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Lighting design in all areas",
+            "phase": "WEDDING",
+            "details": "Source value: 40.000 €",
+            "priceState": "QUOTED",
+            "price": 40000
+          },
+          {
+            "article": "Entertainment",
+            "phase": "WEDDING",
+            "details": "Dancers, emotional catering, shows\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Gift for guests",
+            "phase": "WEDDING",
+            "details": "Some nice Italian gift for guests\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Welcome bags",
+            "phase": "WEDDING",
+            "details": "Depends on items\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Boat for the photoshooting",
+            "phase": "WEDDING",
+            "details": "Classic boat for 1 hour for newlyweds\nSource value: 1.200 €",
+            "priceState": "QUOTED",
+            "price": 1200
+          },
+          {
+            "article": "Transfer for guests during the wedding day",
+            "phase": "WEDDING",
+            "details": "Transfers on the wedding day can be arranged\naccording to the number of hotels, guests, and\nshuttles needed\nSource value: 7.000 €",
+            "priceState": "QUOTED",
+            "price": 7000
+          },
+          {
+            "article": "Colorbomb daytime firework",
+            "phase": "WEDDING",
+            "details": "Start from euro 7000\nSource value: 8.000 €",
+            "priceState": "QUOTED",
+            "price": 8000
+          },
+          {
+            "article": "Fireworks",
+            "phase": "WEDDING",
+            "details": "The price starts from euro 10000\nSource value: 12.000 €",
+            "priceState": "QUOTED",
+            "price": 12000
+          },
+          {
+            "article": "Prewedding dinner in side venue or in villa Balbiano",
+            "phase": "WELCOME",
+            "details": "menu BBQ or Pizza 150 euro per person with\nshow cooking or cooking class - Villa Regina\nTeodolinda for example\nhttps://\nwww.villareginateodolinda.co\nm/it/home-it/\nSource value: 10.500 €",
+            "priceState": "QUOTED",
+            "price": 10500
+          },
+          {
+            "article": "Rent of the venue",
+            "phase": "WELCOME",
+            "details": "Source value: 12.000 €",
+            "priceState": "QUOTED",
+            "price": 12000
+          },
+          {
+            "article": "Italian band",
+            "phase": "WELCOME",
+            "details": "Source value: 8.000 €",
+            "priceState": "QUOTED",
+            "price": 8000
+          },
+          {
+            "article": "Sound and light equipment",
+            "phase": "WELCOME",
+            "details": "Source value: 10.000 €",
+            "priceState": "QUOTED",
+            "price": 10000
+          },
+          {
+            "article": "Photo for rehearsal dinner",
+            "phase": "WELCOME",
+            "details": "Source value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Filmmaker for rehearsal dinner",
+            "phase": "WELCOME",
+            "details": "Source value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Decoration for rehersal dinner",
+            "phase": "WELCOME",
+            "details": "Source value: 20.000 €",
+            "priceState": "QUOTED",
+            "price": 20000
+          },
+          {
+            "article": "Additional furniture",
+            "phase": "WELCOME",
+            "details": "Source value: 10.000 €",
+            "priceState": "QUOTED",
+            "price": 10000
+          },
+          {
+            "article": "Transfer for guests",
+            "phase": "WELCOME",
+            "details": "Source value: 7.000 €",
+            "priceState": "QUOTED",
+            "price": 7000
+          },
+          {
+            "article": "Afterwedding brunch win side venue or pool party in villa Balbiano",
+            "phase": "BRUNCH",
+            "details": "Grand Hotel Tremezzo\nhttps://\nwww.grandhoteltremezzo.com\n/it/\nSource value: 7.320 €",
+            "priceState": "QUOTED",
+            "price": 7320
+          },
+          {
+            "article": "Brunch",
+            "phase": "BRUNCH",
+            "details": "120 euro per person\nSource value: 8.400 €",
+            "priceState": "QUOTED",
+            "price": 8400
+          },
+          {
+            "article": "Furniture for swing pool garden",
+            "phase": "BRUNCH",
+            "details": "Sofas, tables, umbrellas ecc.\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Ice cream car",
+            "phase": "BRUNCH",
+            "details": "From 1200\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "DJ for brunch with equipment",
+            "phase": "BRUNCH",
+            "details": "Source value: 3.000 €",
+            "priceState": "QUOTED",
+            "price": 3000
+          },
+          {
+            "article": "Photo for for after wedding day",
+            "phase": "BRUNCH",
+            "details": "Source value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Filmmaker for after wedding day",
+            "phase": "BRUNCH",
+            "details": "Source value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Transfer for guests",
+            "phase": "BRUNCH",
+            "details": "Source value: 7.000 €",
+            "priceState": "QUOTED",
+            "price": 7000
+          },
+          {
+            "article": "Decoration for brunch",
+            "phase": "BRUNCH",
+            "details": "Source value: 20.000 €",
+            "priceState": "QUOTED",
+            "price": 20000
+          },
+          {
+            "article": "Organization and coordination of the wedding day is Euro 25000 euro + VAT 22%",
+            "phase": "PLANNING",
+            "details": "Source value: 30.500 €",
+            "priceState": "QUOTED",
+            "price": 30500
+          },
+          {
+            "article": "Organization and coordination of side event 10000 Vat 22% =2 side events 20000 +VAT 22%",
+            "phase": "PLANNING",
+            "details": "Source value: 24.400 €",
+            "priceState": "QUOTED",
+            "price": 24400
+          }
+        ],
+        "expectedTotal": 751395
+      },
+      {
+        "scenario": "Villa Pizzo",
+        "priceBasis": "Amounts as quoted; VAT to confirm",
+        "deposit": 0,
+        "items": [
+          {
+            "article": "Location fee for rental",
+            "phase": "WEDDING",
+            "details": "Villa Erba - 1 day event\nVilla Pizzo - 1 day event\nVilla Balbino: Three days/two nights rental\nwith accommodation\nRental fee is 200.000 euro\nCheck-in at 10am on the first day\nMusic curfew outside is 9.30pm\nAfterparty ending time is 1am\nLater is available at extra charge 3.000/hour\nCheckout at 9pm on the third day\nUp to 100 guests for an event\nDepends on your agreements\nwith villa\nSource value: 40.000 €",
+            "priceState": "QUOTED",
+            "price": 40000
+          },
+          {
+            "article": "Accommodation",
+            "phase": "WEDDING",
+            "details": "Source value: N/A",
+            "priceState": "NOT_REQUIRED",
+            "price": null
+          },
+          {
+            "article": "Extra costs",
+            "phase": "WEDDING",
+            "details": "Electricity generator, cleaning, security, ecc..\nSource value: No",
+            "priceState": "NOT_REQUIRED",
+            "price": null
+          },
+          {
+            "article": "Marquee /tent",
+            "phase": "WEDDING",
+            "details": "semi permanent marquee\nSource value: Inlcuded",
+            "priceState": "INCLUDED",
+            "price": null
+          },
+          {
+            "article": "Air conditioning for the marquee",
+            "phase": "WEDDING",
+            "details": "Source value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Accommodation in the hotels for guests",
+            "phase": "WEDDING",
+            "details": "TBD based on chosen venue\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Photographer",
+            "phase": "WEDDING",
+            "details": "TOP Fotographer for 1 day\nFrom euro 15.000 to 80.000\nSource value: 35.000 €",
+            "priceState": "QUOTED",
+            "price": 35000
+          },
+          {
+            "article": "Videographer",
+            "phase": "WEDDING",
+            "details": "TOP Filmmaker for 1 day\nFrom euro 15.000 to 80.000\nSource value: 35.000 €",
+            "priceState": "QUOTED",
+            "price": 35000
+          },
+          {
+            "article": "Stylist Muah",
+            "phase": "WEDDING",
+            "details": "TOP Stylist for Bride with touch up services for\nbride\nSource value: 3.000 €",
+            "priceState": "QUOTED",
+            "price": 3000
+          },
+          {
+            "article": "Banqueting",
+            "phase": "WEDDING",
+            "details": "Wedding reception including aperitif with finger\nfood, tempura, corners, 3 courses dinner, wines\nand toast, price starts from 300 Euro per person\nMichelin-starred chef to be\ncalculated separately\nSource value: 28.625 €",
+            "priceState": "QUOTED",
+            "price": 28625
+          },
+          {
+            "article": "Welcome drink",
+            "phase": "WEDDING",
+            "details": "10 per person, pre ceremony welcome drink\nSource value: 750 €",
+            "priceState": "QUOTED",
+            "price": 750
+          },
+          {
+            "article": "Open bar",
+            "phase": "WEDDING",
+            "details": "Open bar - Classic cocktail and premium brands -\n50 euro per person per hour;\ncalculation for 6 hours\nSource value: 22.500 €",
+            "priceState": "QUOTED",
+            "price": 22500
+          },
+          {
+            "article": "Midnight snacks",
+            "phase": "WEDDING",
+            "details": "euro 15 per person\nSource value: 1.125 €",
+            "priceState": "QUOTED",
+            "price": 1125
+          },
+          {
+            "article": "Dinner for personal",
+            "phase": "WEDDING",
+            "details": "euro 70 per person/ TBD the number of staff\ncalculation for 40 people of\nstaff ( photographer ,\nfilmmakers, coordinators,\nmusicians, technicians audio\nand lights)\nSource value: 2.800 €",
+            "priceState": "QUOTED",
+            "price": 2800
+          },
+          {
+            "article": "Designed wedding cake",
+            "phase": "WEDDING",
+            "details": "From euro 2500 for customized design of wedding\ncake\nSource value: 2.500 €",
+            "priceState": "QUOTED",
+            "price": 2500
+          },
+          {
+            "article": "Master of ceremony / officiant for symbolic ceremony",
+            "phase": "WEDDING",
+            "details": "Source value: 2.500 €",
+            "priceState": "QUOTED",
+            "price": 2500
+          },
+          {
+            "article": "Decoration / Flowers for the wedding day",
+            "phase": "WEDDING",
+            "details": "TBD the concept (price includes logistic,\nmountain, dismounting, floristic materials and\nconstructions and flowers)\nStarting from euro 100.000\nSource value: 200.000 €",
+            "priceState": "QUOTED",
+            "price": 200000
+          },
+          {
+            "article": "Rentals of furniture for ceremony, aperitif, dinner & after party and other extra furniture",
+            "phase": "WEDDING",
+            "details": "special tableware, furniture for ceremony/dinner/\naperitif\nSource value: 40.000 €",
+            "priceState": "QUOTED",
+            "price": 40000
+          },
+          {
+            "article": "Other design elements",
+            "phase": "WEDDING",
+            "details": "Customised details\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Wedding stationary",
+            "phase": "WEDDING",
+            "details": "Invitations, rsvp and others cards\nSource value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Wedding stationary",
+            "phase": "WEDDING",
+            "details": "Menu, place cards\nSource value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Music for ceremony",
+            "phase": "WEDDING",
+            "details": "String trio o quartet for example\nSource value: 2.500 €",
+            "priceState": "QUOTED",
+            "price": 2500
+          },
+          {
+            "article": "Music for aperitif and/or dinner",
+            "phase": "WEDDING",
+            "details": "Cover band including transfer and accommodation\ncosts\nFamous singers will be\ncalculated separately\nSource value: 25.000 €",
+            "priceState": "QUOTED",
+            "price": 25000
+          },
+          {
+            "article": "DJ",
+            "phase": "WEDDING",
+            "details": "After dinner\nSource value: 1.500 €",
+            "priceState": "QUOTED",
+            "price": 1500
+          },
+          {
+            "article": "Audio system / equipment for all areas/ musicians",
+            "phase": "WEDDING",
+            "details": "Respecting all musicians tech riders and venues\nrules\nSource value: 40.000 €",
+            "priceState": "QUOTED",
+            "price": 40000
+          },
+          {
+            "article": "SIAE music tax",
+            "phase": "WEDDING",
+            "details": "Source value: 400 €",
+            "priceState": "QUOTED",
+            "price": 400
+          },
+          {
+            "article": "Aisle and podium in ceremony area",
+            "phase": "WEDDING",
+            "details": "TBD design\nSource value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Stage/ dance floor dinner or after party",
+            "phase": "WEDDING",
+            "details": "TBD design\nSource value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Lighting design in all areas",
+            "phase": "WEDDING",
+            "details": "Source value: 40.000 €",
+            "priceState": "QUOTED",
+            "price": 40000
+          },
+          {
+            "article": "Entertainment",
+            "phase": "WEDDING",
+            "details": "Dancers, emotional catering, shows\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Gift for guests",
+            "phase": "WEDDING",
+            "details": "Some nice Italian gift for guests\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Welcome bags",
+            "phase": "WEDDING",
+            "details": "Depends on items\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Boat for the photoshooting",
+            "phase": "WEDDING",
+            "details": "Classic boat for 1 hour for newlyweds\nSource value: 1.200 €",
+            "priceState": "QUOTED",
+            "price": 1200
+          },
+          {
+            "article": "Transfer for guests during the wedding day",
+            "phase": "WEDDING",
+            "details": "Transfers on the wedding day can be arranged\naccording to the number of hotels, guests, and\nshuttles needed\nSource value: 7.000 €",
+            "priceState": "QUOTED",
+            "price": 7000
+          },
+          {
+            "article": "Colorbomb daytime firework",
+            "phase": "WEDDING",
+            "details": "Start from euro 7000\nSource value: 8.000 €",
+            "priceState": "QUOTED",
+            "price": 8000
+          },
+          {
+            "article": "Fireworks",
+            "phase": "WEDDING",
+            "details": "The price starts from euro 10000\nSource value: 10.000 €",
+            "priceState": "QUOTED",
+            "price": 10000
+          },
+          {
+            "article": "Prewedding dinner in side venue or in villa Balbiano",
+            "phase": "WELCOME",
+            "details": "menu BBQ or Pizza 150 euro per person with\nshow cooking or cooking class - Villa Regina\nTeodolinda for example\nhttps://\nwww.villareginateodolinda.co\nm/it/home-it/\nSource value: 10.500 €",
+            "priceState": "QUOTED",
+            "price": 10500
+          },
+          {
+            "article": "Rent of the venue",
+            "phase": "WELCOME",
+            "details": "Source value: 12.000 €",
+            "priceState": "QUOTED",
+            "price": 12000
+          },
+          {
+            "article": "Italian band",
+            "phase": "WELCOME",
+            "details": "Source value: 8.000 €",
+            "priceState": "QUOTED",
+            "price": 8000
+          },
+          {
+            "article": "Sound and light equipment",
+            "phase": "WELCOME",
+            "details": "Source value: 10.000 €",
+            "priceState": "QUOTED",
+            "price": 10000
+          },
+          {
+            "article": "Photo for rehearsal dinner",
+            "phase": "WELCOME",
+            "details": "Source value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Filmmaker for rehearsal dinner",
+            "phase": "WELCOME",
+            "details": "Source value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Decoration for rehersal dinner",
+            "phase": "WELCOME",
+            "details": "Source value: 20.000 €",
+            "priceState": "QUOTED",
+            "price": 20000
+          },
+          {
+            "article": "Additional furniture",
+            "phase": "WELCOME",
+            "details": "Source value: 10.000 €",
+            "priceState": "QUOTED",
+            "price": 10000
+          },
+          {
+            "article": "Transfer for guests",
+            "phase": "WELCOME",
+            "details": "Source value: 7.000 €",
+            "priceState": "QUOTED",
+            "price": 7000
+          },
+          {
+            "article": "Afterwedding brunch win side venue or pool party in villa Balbiano",
+            "phase": "BRUNCH",
+            "details": "Grand Hotel Tremezzo\nhttps://\nwww.grandhoteltremezzo.com\n/it/\nSource value: 7.320 €",
+            "priceState": "QUOTED",
+            "price": 7320
+          },
+          {
+            "article": "Brunch",
+            "phase": "BRUNCH",
+            "details": "120 euro per person\nSource value: 8.400 €",
+            "priceState": "QUOTED",
+            "price": 8400
+          },
+          {
+            "article": "Furniture for swing pool garden",
+            "phase": "BRUNCH",
+            "details": "Sofas, tables, umbrellas ecc.\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Ice cream car",
+            "phase": "BRUNCH",
+            "details": "From 1200\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "DJ for brunch with equipment",
+            "phase": "BRUNCH",
+            "details": "Source value: 3.000 €",
+            "priceState": "QUOTED",
+            "price": 3000
+          },
+          {
+            "article": "Photo for for after wedding day",
+            "phase": "BRUNCH",
+            "details": "Source value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Filmmaker for after wedding day",
+            "phase": "BRUNCH",
+            "details": "Source value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Transfer for guests",
+            "phase": "BRUNCH",
+            "details": "Source value: 7.000 €",
+            "priceState": "QUOTED",
+            "price": 7000
+          },
+          {
+            "article": "Decoration for brunch",
+            "phase": "BRUNCH",
+            "details": "Source value: 20.000 €",
+            "priceState": "QUOTED",
+            "price": 20000
+          },
+          {
+            "article": "Organization and coordination of the wedding day is Euro 25000 euro + VAT 22%",
+            "phase": "PLANNING",
+            "details": "Source value: 30.500 €",
+            "priceState": "QUOTED",
+            "price": 30500
+          },
+          {
+            "article": "Organization and coordination of side event 10000 Vat 22% =2 side events 20000 +VAT 22%",
+            "phase": "PLANNING",
+            "details": "Source value: 24.400 €",
+            "priceState": "QUOTED",
+            "price": 24400
+          }
+        ],
+        "expectedTotal": 767520
+      },
+      {
+        "scenario": "Villa Balbiano",
+        "priceBasis": "Amounts as quoted; VAT to confirm",
+        "deposit": 0,
+        "items": [
+          {
+            "article": "Location fee for rental",
+            "phase": "WEDDING",
+            "details": "Villa Erba - 1 day event\nVilla Pizzo - 1 day event\nVilla Balbino: Three days/two nights rental\nwith accommodation\nRental fee is 200.000 euro\nCheck-in at 10am on the first day\nMusic curfew outside is 9.30pm\nAfterparty ending time is 1am\nLater is available at extra charge 3.000/hour\nCheckout at 9pm on the third day\nUp to 100 guests for an event\nDepends on your agreements\nwith villa\nSource value: 200.000 €",
+            "priceState": "QUOTED",
+            "price": 200000
+          },
+          {
+            "article": "Accommodation",
+            "phase": "WEDDING",
+            "details": "Source value: 6 suites",
+            "priceState": "INCLUDED",
+            "price": null
+          },
+          {
+            "article": "Extra costs",
+            "phase": "WEDDING",
+            "details": "Electricity generator, cleaning, security, ecc..\nSource value: 15.000 €",
+            "priceState": "QUOTED",
+            "price": 15000
+          },
+          {
+            "article": "Marquee /tent",
+            "phase": "WEDDING",
+            "details": "semi permanent marquee\nSource value: 80.000 €",
+            "priceState": "QUOTED",
+            "price": 80000
+          },
+          {
+            "article": "Air conditioning for the marquee",
+            "phase": "WEDDING",
+            "details": "Source value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Accommodation in the hotels for guests",
+            "phase": "WEDDING",
+            "details": "TBD based on chosen venue\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Photographer",
+            "phase": "WEDDING",
+            "details": "TOP Fotographer for 1 day\nFrom euro 15.000 to 80.000\nSource value: 35.000 €",
+            "priceState": "QUOTED",
+            "price": 35000
+          },
+          {
+            "article": "Videographer",
+            "phase": "WEDDING",
+            "details": "TOP Filmmaker for 1 day\nFrom euro 15.000 to 80.000\nSource value: 35.000 €",
+            "priceState": "QUOTED",
+            "price": 35000
+          },
+          {
+            "article": "Stylist Muah",
+            "phase": "WEDDING",
+            "details": "TOP Stylist for Bride with touch up services for\nbride\nSource value: 3.000 €",
+            "priceState": "QUOTED",
+            "price": 3000
+          },
+          {
+            "article": "Banqueting",
+            "phase": "WEDDING",
+            "details": "Wedding reception including aperitif with finger\nfood, tempura, corners, 3 courses dinner, wines\nand toast, price starts from 300 Euro per person\nMichelin-starred chef to be\ncalculated separately\nSource value: 26.250 €",
+            "priceState": "QUOTED",
+            "price": 26250
+          },
+          {
+            "article": "Welcome drink",
+            "phase": "WEDDING",
+            "details": "10 per person, pre ceremony welcome drink\nSource value: 750 €",
+            "priceState": "QUOTED",
+            "price": 750
+          },
+          {
+            "article": "Open bar",
+            "phase": "WEDDING",
+            "details": "Open bar - Classic cocktail and premium brands -\n50 euro per person per hour;\ncalculation for 6 hours\nSource value: 22.500 €",
+            "priceState": "QUOTED",
+            "price": 22500
+          },
+          {
+            "article": "Midnight snacks",
+            "phase": "WEDDING",
+            "details": "euro 15 per person\nSource value: 1.125 €",
+            "priceState": "QUOTED",
+            "price": 1125
+          },
+          {
+            "article": "Dinner for personal",
+            "phase": "WEDDING",
+            "details": "euro 70 per person/ TBD the number of staff\ncalculation for 40 people of\nstaff ( photographer ,\nfilmmakers, coordinators,\nmusicians, technicians audio\nand lights)\nSource value: 2.800 €",
+            "priceState": "QUOTED",
+            "price": 2800
+          },
+          {
+            "article": "Designed wedding cake",
+            "phase": "WEDDING",
+            "details": "From euro 2500 for customized design of wedding\ncake\nSource value: 2.500 €",
+            "priceState": "QUOTED",
+            "price": 2500
+          },
+          {
+            "article": "Master of ceremony / officiant for symbolic ceremony",
+            "phase": "WEDDING",
+            "details": "Source value: 2.500 €",
+            "priceState": "QUOTED",
+            "price": 2500
+          },
+          {
+            "article": "Decoration / Flowers for the wedding day",
+            "phase": "WEDDING",
+            "details": "TBD the concept (price includes logistic,\nmountain, dismounting, floristic materials and\nconstructions and flowers)\nStarting from euro 100.000\nSource value: 200.000 €",
+            "priceState": "QUOTED",
+            "price": 200000
+          },
+          {
+            "article": "Rentals of furniture for ceremony, aperitif, dinner & after party and other extra furniture",
+            "phase": "WEDDING",
+            "details": "special tableware, furniture for ceremony/dinner/\naperitif\nSource value: 40.000 €",
+            "priceState": "QUOTED",
+            "price": 40000
+          },
+          {
+            "article": "Other design elements",
+            "phase": "WEDDING",
+            "details": "Customised details\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Wedding stationary",
+            "phase": "WEDDING",
+            "details": "Invitations, rsvp and others cards\nSource value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Wedding stationary",
+            "phase": "WEDDING",
+            "details": "Menu, place cards\nSource value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Music for ceremony",
+            "phase": "WEDDING",
+            "details": "String trio o quartet for example\nSource value: 2.500 €",
+            "priceState": "QUOTED",
+            "price": 2500
+          },
+          {
+            "article": "Music for aperitif and/or dinner",
+            "phase": "WEDDING",
+            "details": "Cover band including transfer and accommodation\ncosts\nFamous singers will be\ncalculated separately\nSource value: 25.000 €",
+            "priceState": "QUOTED",
+            "price": 25000
+          },
+          {
+            "article": "DJ",
+            "phase": "WEDDING",
+            "details": "After dinner\nSource value: 1.500 €",
+            "priceState": "QUOTED",
+            "price": 1500
+          },
+          {
+            "article": "Audio system / equipment for all areas/ musicians",
+            "phase": "WEDDING",
+            "details": "Respecting all musicians tech riders and venues\nrules\nSource value: 40.000 €",
+            "priceState": "QUOTED",
+            "price": 40000
+          },
+          {
+            "article": "SIAE music tax",
+            "phase": "WEDDING",
+            "details": "Source value: 400 €",
+            "priceState": "QUOTED",
+            "price": 400
+          },
+          {
+            "article": "Aisle and podium in ceremony area",
+            "phase": "WEDDING",
+            "details": "TBD design\nSource value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Stage/ dance floor dinner or after party",
+            "phase": "WEDDING",
+            "details": "TBD design\nSource value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Lighting design in all areas",
+            "phase": "WEDDING",
+            "details": "Source value: 40.000 €",
+            "priceState": "QUOTED",
+            "price": 40000
+          },
+          {
+            "article": "Entertainment",
+            "phase": "WEDDING",
+            "details": "Dancers, emotional catering, shows\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Gift for guests",
+            "phase": "WEDDING",
+            "details": "Some nice Italian gift for guests\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Welcome bags",
+            "phase": "WEDDING",
+            "details": "Depends on items\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "Boat for the photoshooting",
+            "phase": "WEDDING",
+            "details": "Classic boat for 1 hour for newlyweds\nSource value: 1.200 €",
+            "priceState": "QUOTED",
+            "price": 1200
+          },
+          {
+            "article": "Transfer for guests during the wedding day",
+            "phase": "WEDDING",
+            "details": "Transfers on the wedding day can be arranged\naccording to the number of hotels, guests, and\nshuttles needed\nSource value: 7.000 €",
+            "priceState": "QUOTED",
+            "price": 7000
+          },
+          {
+            "article": "Colorbomb daytime firework",
+            "phase": "WEDDING",
+            "details": "Start from euro 7000\nSource value: 8.000 €",
+            "priceState": "QUOTED",
+            "price": 8000
+          },
+          {
+            "article": "Fireworks",
+            "phase": "WEDDING",
+            "details": "The price starts from euro 10000\nSource value: 15.000 €",
+            "priceState": "QUOTED",
+            "price": 15000
+          },
+          {
+            "article": "Prewedding dinner in side venue or in villa Balbiano",
+            "phase": "WELCOME",
+            "details": "menu BBQ or Pizza 150 euro per person with\nshow cooking or cooking class - Villa Regina\nTeodolinda for example\nhttps://\nwww.villareginateodolinda.co\nm/it/home-it/\nSource value: 10.500 €",
+            "priceState": "QUOTED",
+            "price": 10500
+          },
+          {
+            "article": "Rent of the venue",
+            "phase": "WELCOME",
+            "details": "Source value: 10.000 €",
+            "priceState": "QUOTED",
+            "price": 10000
+          },
+          {
+            "article": "Italian band",
+            "phase": "WELCOME",
+            "details": "Source value: 8.000 €",
+            "priceState": "QUOTED",
+            "price": 8000
+          },
+          {
+            "article": "Sound and light equipment",
+            "phase": "WELCOME",
+            "details": "Source value: 10.000 €",
+            "priceState": "QUOTED",
+            "price": 10000
+          },
+          {
+            "article": "Photo for rehearsal dinner",
+            "phase": "WELCOME",
+            "details": "Source value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Filmmaker for rehearsal dinner",
+            "phase": "WELCOME",
+            "details": "Source value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Decoration for rehersal dinner",
+            "phase": "WELCOME",
+            "details": "Source value: 20.000 €",
+            "priceState": "QUOTED",
+            "price": 20000
+          },
+          {
+            "article": "Additional furniture",
+            "phase": "WELCOME",
+            "details": "Source value: 10.000 €",
+            "priceState": "QUOTED",
+            "price": 10000
+          },
+          {
+            "article": "Transfer for guests",
+            "phase": "WELCOME",
+            "details": "Source value: 7.000 €",
+            "priceState": "QUOTED",
+            "price": 7000
+          },
+          {
+            "article": "Afterwedding brunch win side venue or pool party in villa Balbiano",
+            "phase": "BRUNCH",
+            "details": "Grand Hotel Tremezzo\nhttps://\nwww.grandhoteltremezzo.com\n/it/\nSource value: 10.000 €",
+            "priceState": "QUOTED",
+            "price": 10000
+          },
+          {
+            "article": "Brunch",
+            "phase": "BRUNCH",
+            "details": "120 euro per person\nSource value: 8.400 €",
+            "priceState": "QUOTED",
+            "price": 8400
+          },
+          {
+            "article": "Furniture for swing pool garden",
+            "phase": "BRUNCH",
+            "details": "Sofas, tables, umbrellas ecc.\nSource value: 10.000 €",
+            "priceState": "QUOTED",
+            "price": 10000
+          },
+          {
+            "article": "Ice cream car",
+            "phase": "BRUNCH",
+            "details": "From 1200\nSource value: TBD",
+            "priceState": "TBD",
+            "price": null
+          },
+          {
+            "article": "DJ for brunch with equipment",
+            "phase": "BRUNCH",
+            "details": "Source value: 3.000 €",
+            "priceState": "QUOTED",
+            "price": 3000
+          },
+          {
+            "article": "Photo for for after wedding day",
+            "phase": "BRUNCH",
+            "details": "Source value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Filmmaker for after wedding day",
+            "phase": "BRUNCH",
+            "details": "Source value: 5.000 €",
+            "priceState": "QUOTED",
+            "price": 5000
+          },
+          {
+            "article": "Transfer for guests",
+            "phase": "BRUNCH",
+            "details": "Source value: 7.000 €",
+            "priceState": "QUOTED",
+            "price": 7000
+          },
+          {
+            "article": "Decoration for brunch",
+            "phase": "BRUNCH",
+            "details": "Source value: 20.000 €",
+            "priceState": "QUOTED",
+            "price": 20000
+          },
+          {
+            "article": "Organization and coordination of the wedding day is Euro 25000 euro + VAT 22%",
+            "phase": "PLANNING",
+            "details": "Source value: 30.500 €",
+            "priceState": "QUOTED",
+            "price": 30500
+          },
+          {
+            "article": "Organization and coordination of side event 10000 Vat 22% =2 side events 20000 +VAT 22%",
+            "phase": "PLANNING",
+            "details": "Source value: 24.400 €",
+            "priceState": "QUOTED",
+            "price": 24400
+          }
+        ],
+        "expectedTotal": 1035825
+      }
+    ]
+  }
+]

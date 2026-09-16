@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: planner
+  datasource:
+    url: jdbc:h2:file:./data/wedding-planner;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+
+server:
+  error:
+    include-message: always
+
+# The events side of the demo — crew, venues, the event book and its ledger — is seeded behind this
+# flag. It was never set here, so a database built from empty had inquiries and nothing else: every
+# role folder read zero and the Events section was bare. The old data file only had them because a
+# run somewhere once turned this on.
+planner:
+  events:
+    demo: true
+
+onno:
+  ui:
+    locale: en
+    login:
+      demo-accounts:
+        - label: Open Wedding Planner demo
+          username: demo@weddingplanner.local
+          password: demo
+  comments:
+    enabled: true
+  auth:
+    mode: in-memory
+    demo:
+      auto-login-username: demo@weddingplanner.local
+    session:
+      remember-me:
+        allow-ephemeral-key: true
+    users:
+      - username: demo@weddingplanner.local
+        password: demo
+        roles: [MANAGER]

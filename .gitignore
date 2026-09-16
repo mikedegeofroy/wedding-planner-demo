@@ -1,0 +1,10 @@
+.gradle/
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+.idea/
+*.iml
+.DS_Store
+# Seeded on first boot; a database in the repo would ship one machine's demo state to every deploy.
+data/
+# Local tooling, not part of the app.
+.claude/
