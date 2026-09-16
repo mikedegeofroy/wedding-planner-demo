@@ -148,7 +148,12 @@ public class FlagshipEventSeeder implements CommandLineRunner {
         }
     }
 
-    private Optional<EventProject> flagship() {
+    /**
+     * The event this demo is built around, for anything else that wants to enrich the same wedding.
+     * Public so the conversation seeder can give its couple a chat history rather than leaving the
+     * one event anybody opens as the one with nothing in its inbox.
+     */
+    public Optional<EventProject> flagship() {
         var linked = events.findActiveById(LINKED_EVENT);
         if (linked.isPresent()) return linked;
         return events.findAllActive().stream()

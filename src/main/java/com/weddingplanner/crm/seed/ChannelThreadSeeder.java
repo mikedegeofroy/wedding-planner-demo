@@ -41,12 +41,16 @@ import su.onno.types.Ref;
  * answers three days later. The same contact appears on two or three channels on purpose — that is
  * what the unified contact panel is for, and with one channel per couple it has nothing to unify.
  *
+ * <p>Runs after the flagship event is settled, so the couple whose wedding the demo is built around
+ * is always one of them. Without that it was luck: the threads went to the newest booked couples and
+ * the one event anybody actually opens could be the one with an empty inbox.
+ *
  * <p>Deterministic per contact, idempotent by conversation id, and additive: it never edits or
  * deletes a conversation the rest of the demo created. Set
  * {@code planner.crm.demo-threads=false} for a dataset of exactly the imported inquiries — which is
  * what the inbox and merge suites assert against.
  */
-@Order(20)
+@Order(32)
 @Component
 @ConditionalOnProperty(name = "planner.crm.demo-threads", matchIfMissing = true)
 public class ChannelThreadSeeder implements CommandLineRunner {
@@ -56,12 +60,15 @@ public class ChannelThreadSeeder implements CommandLineRunner {
 
     private final LeadInquiryRepository leads;
     private final ContactRepository contacts;
+    private final org.springframework.beans.factory.ObjectProvider<FlagshipEventSeeder> flagship;
     private final InboxRepository inboxes;
     private final ConversationRepository conversations;
     private final ConversationMessageRepository messages;
 
     public ChannelThreadSeeder(LeadInquiryRepository leads, ContactRepository contacts, InboxRepository inboxes,
-            ConversationRepository conversations, ConversationMessageRepository messages) {
+            ConversationRepository conversations, ConversationMessageRepository messages,
+            org.springframework.beans.factory.ObjectProvider<FlagshipEventSeeder> flagship) {
+        this.flagship = flagship;
         this.leads = leads;
         this.contacts = contacts;
         this.inboxes = inboxes;
@@ -76,12 +83,23 @@ public class ChannelThreadSeeder implements CommandLineRunner {
     public void run(String... args) {
         // Newest first, and only couples far enough along to have talked to anyone: a lead that is
         // still unqualified has not had three days of back-and-forth about a site visit.
-        List<LeadInquiry> candidates = leads.findAllActive().stream()
+        var talkative = leads.findAllActive().stream()
                 .filter(lead -> lead.getContact() != null && lead.getDate() != null)
                 .filter(lead -> lead.isMet() || lead.isBooked())
                 .sorted(Comparator.comparing(LeadInquiry::getDate).reversed())
                 .limit(COUPLES)
                 .toList();
+
+        // The demo's own wedding goes first, then the couples who wrote in most recently. Ordered
+        // that way on purpose: the flagship's threads are seeded into the newest slots, so the event
+        // someone is being shown is also the conversation at the top of the inbox.
+        var candidates = new ArrayList<LeadInquiry>();
+        flagshipLead().ifPresent(candidates::add);
+        for (LeadInquiry lead : talkative) {
+            if (candidates.stream().noneMatch(chosen -> chosen.getId().equals(lead.getId()))) {
+                candidates.add(lead);
+            }
+        }
 
         // Inquiries are generated right up to the present minute, so a thread that ended "a couple of
         // hours ago" is not the newest thing in the inbox — it lands below a stranger's one-line
@@ -99,6 +117,19 @@ public class ChannelThreadSeeder implements CommandLineRunner {
                 slot++;
             }
         }
+    }
+
+    /** The inquiry behind the flagship event's client, when the events side of the demo is on. */
+    private java.util.Optional<LeadInquiry> flagshipLead() {
+        var seeder = flagship.getIfAvailable();
+        if (seeder == null) return java.util.Optional.empty();
+        return seeder.flagship()
+                .map(com.weddingplanner.crm.events.domain.EventProject::getClient)
+                .filter(java.util.Objects::nonNull)
+                .flatMap(client -> leads.findAllActive().stream()
+                        .filter(lead -> lead.getContact() != null && lead.getContact().id().equals(client.id()))
+                        .filter(lead -> lead.getDate() != null)
+                        .findFirst());
     }
 
     /**
