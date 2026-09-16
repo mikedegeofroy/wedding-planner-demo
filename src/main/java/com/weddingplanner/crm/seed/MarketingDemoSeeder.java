@@ -38,10 +38,20 @@ public class MarketingDemoSeeder implements CommandLineRunner {
 
     /** Below this the dataset is still the six-lead demo and wants filling out. */
     private static final int THIN_DATASET = 40;
-    // Two years, not one: every stat tile on the operations board compares against the previous
-    // period, and at the 1y preset a single year of history leaves that comparison with nothing to
-    // read. The seasonality curve also only looks like a curve once it has repeated.
-    private static final int MONTHS = 24;
+    /**
+     * How much history to generate, in months.
+     *
+     * <p>Two years reads best: the seasonality curve only looks like a curve once it has repeated,
+     * and the year preset then has a previous year to compare against. But each month is roughly
+     * forty more inquiries, every one of them carrying a contact, a conversation and its messages —
+     * seeded at boot and read back whole by the inbox. A hosted tenant is given a gigabyte, which a
+     * JVM turns into about a quarter of that for the heap, and two years does not fit in it.
+     *
+     * <p>So a year by default, and {@code planner.marketing.demo-months} where there is room for
+     * more. The ninety-day board is unaffected either way — that window is set by how many inquiries
+     * a month carries, not by how many months there are.
+     */
+    private final int months;
 
     private final LeadInquiryRepository leads;
     private final MarketingPerformanceRepository performance;
@@ -50,7 +60,9 @@ public class MarketingDemoSeeder implements CommandLineRunner {
 
     public MarketingDemoSeeder(LeadInquiryRepository leads, MarketingPerformanceRepository performance,
                                MarketingRollupService rollup,
-                               com.weddingplanner.crm.service.PipelineStageService stages) {
+                               com.weddingplanner.crm.service.PipelineStageService stages,
+                               @org.springframework.beans.factory.annotation.Value("${planner.marketing.demo-months:12}") int months) {
+        this.months = Math.max(1, months);
         this.leads = leads;
         this.performance = performance;
         this.rollup = rollup;
@@ -147,17 +159,17 @@ public class MarketingDemoSeeder implements CommandLineRunner {
         dropLegacySummaryRows();
 
         Random random = new Random(20260911L);
-        LocalDate firstMonth = LocalDate.now().withDayOfMonth(1).minusMonths(MONTHS - 1L);
+        LocalDate firstMonth = LocalDate.now().withDayOfMonth(1).minusMonths(months - 1L);
         int couple = 0;
 
-        for (int monthIndex = 0; monthIndex < MONTHS; monthIndex++) {
+        for (int monthIndex = 0; monthIndex < months; monthIndex++) {
             LocalDate month = firstMonth.plusMonths(monthIndex);
             // Weddings are seasonal and so is the demand for them: enquiries build through winter
             // for the following summer. A flat year would make every trend line meaningless.
             double seasonality = seasonality(month.getMonthValue());
             for (ChannelProfile channel : CHANNELS) {
                 seedSpend(channel, month, seasonality);
-                int count = poisson(random, channel.leadsPerMonth() * seasonality * growth(monthIndex));
+                int count = poisson(random, channel.leadsPerMonth() * seasonality * growth(monthIndex, months));
                 for (int i = 0; i < count; i++) {
                     seedLead(channel, month, random, couple++);
                 }
@@ -519,8 +531,8 @@ public class MarketingDemoSeeder implements CommandLineRunner {
      * from it, so today's volume is the {@code leadsPerMonth} the channel table actually states and
      * the history ramps up to it rather than away from it.
      */
-    private static double growth(int monthIndex) {
-        return Math.pow(1.04, monthIndex - (MONTHS - 1.0));
+    private static double growth(int monthIndex, int months) {
+        return Math.pow(1.04, monthIndex - (months - 1.0));
     }
 
     /** Counts vary month to month; a fixed number per month would draw a suspiciously flat chart. */
