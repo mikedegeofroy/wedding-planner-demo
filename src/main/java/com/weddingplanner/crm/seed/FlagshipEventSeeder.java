@@ -11,6 +11,7 @@ import com.weddingplanner.crm.events.domain.EventProject;
 import com.weddingplanner.crm.events.domain.EventStage;
 import com.weddingplanner.crm.events.repository.BudgetArticleRepository;
 import com.weddingplanner.crm.events.repository.EventBudgetRepository;
+import com.weddingplanner.crm.events.repository.EventInvoiceRepository;
 import com.weddingplanner.crm.events.repository.EventPartyRepository;
 import com.weddingplanner.crm.events.repository.EventProjectRepository;
 import com.weddingplanner.crm.repository.ContactRepository;
@@ -20,6 +21,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
 import java.util.UUID;
@@ -55,11 +57,25 @@ import su.onno.types.Ref;
 public class FlagshipEventSeeder implements CommandLineRunner {
 
     /**
-     * The event the demo links to. Event ids are derived from the couple, so this one survives a
-     * reseed of the same book; when the book changes underneath it, the biggest estimate is the
-     * next best thing to put on screen.
+     * A specific event to work up, for a deployment that wants one. Empty by default, because an
+     * event id is derived from its couple and a couple is generated per database — an id pinned
+     * here would name a real wedding on the machine it was written on and nothing at all anywhere
+     * else, which is exactly how this seeder used to miss its target in the cloud.
      */
-    private static final UUID LINKED_EVENT = UUID.fromString("1caefbea-624d-34aa-946c-e780a3103b6b");
+    private final String pinned;
+
+    public FlagshipEventSeeder(EventProjectRepository events, EventBudgetRepository budgets,
+            BudgetArticleRepository articles, EventPartyRepository parties, ContactRepository contacts,
+            EventInvoiceRepository invoices,
+            @org.springframework.beans.factory.annotation.Value("${planner.events.flagship:}") String pinned) {
+        this.events = events;
+        this.budgets = budgets;
+        this.articles = articles;
+        this.parties = parties;
+        this.contacts = contacts;
+        this.invoices = invoices;
+        this.pinned = pinned;
+    }
 
     /** A supplier, and the estimate articles that are obviously theirs. */
     private record Supplier(String name, String email, String phone, InboxFolder role,
@@ -95,22 +111,27 @@ public class FlagshipEventSeeder implements CommandLineRunner {
                     List.of("venue", "villa", "rent", "location fee", "estate", "garden")),
             new Supplier("Rosa Marino · Celebrant", "rosa@marinocelebrant.it", "+39 091 555 0179",
                     InboxFolder.CONTRACTORS, "Ceremony and legal paperwork", "0",
-                    List.of("ceremony", "celebrant", "officiant", "legal", "registrar")));
+                    List.of("ceremony", "celebrant", "officiant", "legal", "registrar")),
+            new Supplier("Fioraio Santamaria · Elena Conti", "elena@santamariafiori.it", "+39 091 555 0180",
+                    InboxFolder.CONTRACTORS, "Ceremony, reception and table florals", "13",
+                    List.of("flower", "floral", "bouquet", "centrepiece", "installation", "candle")),
+            new Supplier("Studio Aureo · Paolo Ricci", "paolo@studioaureo.it", "+39 091 555 0181",
+                    InboxFolder.CONTRACTORS, "Photography, film and the drone permit", "10",
+                    List.of("photo", "video", "film", "drone", "album", "shooter")),
+            new Supplier("Bottega Verde Rentals", "noleggio@bottegaverde.it", "+39 091 555 0182",
+                    InboxFolder.CONTRACTORS, "Furniture, linen, tableware and the dance floor", "12",
+                    List.of("furniture", "linen", "tableware", "china", "glassware", "dance floor",
+                            "marquee", "tent", "rental")),
+            new Supplier("Isola Guest Services", "welcome@isolaguest.it", "+39 091 555 0183",
+                    InboxFolder.PARTNERS, "Guest welcome bags, concierge and room drops", "9",
+                    List.of("gift", "favour", "welcome bag", "welcome pack", "hamper", "concierge")));
 
     private final EventProjectRepository events;
     private final EventBudgetRepository budgets;
     private final BudgetArticleRepository articles;
     private final EventPartyRepository parties;
     private final ContactRepository contacts;
-
-    public FlagshipEventSeeder(EventProjectRepository events, EventBudgetRepository budgets,
-            BudgetArticleRepository articles, EventPartyRepository parties, ContactRepository contacts) {
-        this.events = events;
-        this.budgets = budgets;
-        this.articles = articles;
-        this.parties = parties;
-        this.contacts = contacts;
-    }
+    private final EventInvoiceRepository invoices;
 
     @Override
     public void run(String... args) {
@@ -120,6 +141,11 @@ public class FlagshipEventSeeder implements CommandLineRunner {
         if (event.getSelectedBudget() == null) return;
         EventBudget selected = budgets.findActiveById(event.getSelectedBudget().id()).orElse(null);
         if (selected == null) return;
+        // A wedding already billed is a wedding somebody has worked: its prices are what was agreed
+        // with the suppliers who are invoicing against them, and re-pricing it here would move the
+        // estimate out from under its own ledger. Scenarios and a roster are what this seeder adds
+        // to an untouched event, not something to impose on a settled one.
+        if (!invoices.findByEventAndDeletionMarkFalse(event.getId()).isEmpty()) return;
 
         var random = new Random(event.getId().getMostSignificantBits());
         for (Supplier supplier : ROSTER) party(event, supplier(supplier), supplier);
@@ -132,13 +158,17 @@ public class FlagshipEventSeeder implements CommandLineRunner {
         for (EventBudget scenario : scenarios) {
             price(scenario, new Random(scenario.getId().getMostSignificantBits()));
         }
-        // The alternative is derived from the full estimate, whichever one the planner has since
-        // pointed the event at — deriving it from the trimmed scenario would trim a trim.
+        // Both derived scenarios come from the estimate the book itself produced, never from each
+        // other: trimming a trim makes each boot quietly cheaper than the last, and uplifting an
+        // uplift makes it quietly dearer.
         UUID trimmedId = id("budget", "trimmed:" + event.getId());
+        UUID enhancedId = id("budget", "enhanced:" + event.getId());
         EventBudget base = scenarios.stream()
                 .filter(scenario -> !scenario.getId().equals(trimmedId))
+                .filter(scenario -> !scenario.getId().equals(enhancedId))
                 .findFirst().orElse(selected);
         alternative(event, base, random);
+        enhanced(event, base, new Random(~event.getId().getMostSignificantBits()));
 
         // Signed, so the ledger settles it. A wedding with paid supplier invoices and no signature
         // would be the one incoherent row in the book.
@@ -154,12 +184,19 @@ public class FlagshipEventSeeder implements CommandLineRunner {
      * one event anybody opens as the one with nothing in its inbox.
      */
     public Optional<EventProject> flagship() {
-        var linked = events.findActiveById(LINKED_EVENT);
-        if (linked.isPresent()) return linked;
+        if (pinned != null && !pinned.isBlank()) {
+            var chosen = events.findActiveById(UUID.fromString(pinned.trim()));
+            if (chosen.isPresent()) return chosen;
+        }
+        // The event at the head of the Events list, which is the one anybody opens first: the list
+        // is newest-created-first, and codes are issued in order, so the highest code is that row.
+        // Choosing it by position rather than by id is what makes this seeder land on the same
+        // wedding in every database — the ids differ, the top of the list does not.
         return events.findAllActive().stream()
                 .filter(event -> event.getSelectedBudget() != null)
-                .max(Comparator.comparing(event -> budgets.findActiveById(event.getSelectedBudget().id())
-                        .map(EventBudget::getTotal).orElse(BigDecimal.ZERO)));
+                .max(Comparator.comparing((EventProject event) -> Objects.toString(event.getCode(), ""))
+                        .thenComparing(event -> budgets.findActiveById(event.getSelectedBudget().id())
+                                .map(EventBudget::getTotal).orElse(BigDecimal.ZERO)));
     }
 
     /**
@@ -260,6 +297,67 @@ public class FlagshipEventSeeder implements CommandLineRunner {
             if (source.getUnitCost() != null) {
                 line.setUnitCost(trim
                         ? source.getUnitCost().multiply(new BigDecimal("0.85")).setScale(2, RoundingMode.HALF_UP)
+                        : source.getUnitCost());
+            }
+            budget.getItems().add(line);
+        }
+        budgets.save(budget);
+    }
+
+    /** The rows a couple with room in the budget spends more on, and the only ones that move up. */
+    private static final List<String> UPGRADES = List.of("flower", "floral", "bouquet", "centrepiece",
+            "installation", "photo", "video", "film", "drone", "album", "band", "music", "live",
+            "light", "sound", "production", "wine", "champagne", "menu", "catering", "cake");
+
+    /**
+     * The third scenario: the same wedding with the rows a couple brags about taken up a level —
+     * a second shooter, the bigger band, florals on every table, wine off the reserve list.
+     *
+     * <p>Two scenarios make a comparison; three make a decision. A planner does not walk into the
+     * meeting with the estimate and a cheaper version of it — the whole point of the middle option
+     * is that it has something either side of it, and the couple picks the shape they recognise.</p>
+     *
+     * <p>Like the trim, it only moves the rows it is about. The venue, the celebrant and the coaches
+     * cost what they cost, and a scenario that repriced them would be arithmetic rather than a
+     * proposal.</p>
+     */
+    private void enhanced(EventProject event, EventBudget base, Random random) {
+        UUID id = id("budget", "enhanced:" + event.getId());
+        if (id.equals(base.getId())) return;
+        var existing = budgets.findActiveById(id).orElse(null);
+        if (existing != null && (existing.getScenario() == null || !existing.getScenario().endsWith("· enhanced"))) return;
+
+        var budget = existing != null ? existing : new EventBudget();
+        if (existing == null) {
+            budget.setId(id);
+            budget.setEvent(Ref.of(EventProject.class, event.getId()));
+        }
+        budget.getItems().clear();
+        budget.setScenario(base.getScenario() + " · enhanced");
+        budget.setRevision(3);
+        budget.setPriceBasis("Same venue and guest count, feature rows taken up a level");
+        for (EventBudgetLine source : base.getItems()) {
+            var line = new EventBudgetLine();
+            line.setPhase(source.getPhase());
+            line.setArticle(source.getArticle());
+            line.setDetails(source.getDetails());
+            line.setKind(source.getKind());
+            line.setPriceState(source.getPriceState());
+            line.setQuantity(source.getQuantity());
+            line.setContractor(source.getContractor());
+            String article = articleName(source);
+            boolean lift = !article.isBlank() && UPGRADES.stream().anyMatch(article::contains);
+            if (source.getUnitPrice() != null) {
+                BigDecimal factor = lift
+                        ? BigDecimal.valueOf(1.18 + random.nextInt(22) / 100.0)
+                        : BigDecimal.ONE;
+                line.setUnitPrice(source.getUnitPrice().multiply(factor).setScale(2, RoundingMode.HALF_UP));
+            }
+            if (source.getUnitCost() != null) {
+                // A better version of the same row costs us more too, but not proportionally: the
+                // uplift is where the margin on a wedding is actually made.
+                line.setUnitCost(lift
+                        ? source.getUnitCost().multiply(new BigDecimal("1.12")).setScale(2, RoundingMode.HALF_UP)
                         : source.getUnitCost());
             }
             budget.getItems().add(line);

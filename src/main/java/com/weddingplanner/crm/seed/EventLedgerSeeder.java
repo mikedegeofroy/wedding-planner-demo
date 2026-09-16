@@ -42,28 +42,60 @@ public class EventLedgerSeeder implements CommandLineRunner {
     private final EventInvoiceRepository invoices;
     private final EventPaymentRepository payments;
     private final PostingService posting;
+    private final org.springframework.beans.factory.ObjectProvider<FlagshipEventSeeder> flagship;
 
     public EventLedgerSeeder(EventProjectRepository events, EventBudgetRepository budgets,
-            EventInvoiceRepository invoices, EventPaymentRepository payments, PostingService posting) {
+            EventInvoiceRepository invoices, EventPaymentRepository payments, PostingService posting,
+            org.springframework.beans.factory.ObjectProvider<FlagshipEventSeeder> flagship) {
         this.events = events; this.budgets = budgets;
         this.invoices = invoices; this.payments = payments; this.posting = posting;
+        this.flagship = flagship;
     }
 
-    /** How far along an event's money is, which is a question about its stage and nothing else. */
-    private record Settlement(boolean delivered, BigDecimal supplierShare, BigDecimal clientShare) {}
+    /** One transfer against an invoice: what it is called, and how much of the invoice it clears. */
+    private record Instalment(String key, String reference, BigDecimal share) {}
+
+    /**
+     * How far along an event's money is. Usually a question about its stage and nothing else — the
+     * exception is the wedding the demo is built around, which is worked far enough that the
+     * payments tab has a history rather than a single line.
+     */
+    private record Settlement(boolean delivered, BigDecimal supplierShare, BigDecimal clientShare,
+            boolean commitAll, List<Instalment> clientSchedule, List<Instalment> supplierSchedule) {
+        Settlement(boolean delivered, BigDecimal supplierShare, BigDecimal clientShare) {
+            this(delivered, supplierShare, clientShare, false, List.of(), List.of());
+        }
+    }
 
     private static final Settlement COMPLETED =
             new Settlement(true, BigDecimal.ONE, BigDecimal.ONE);
     private static final Settlement CONFIRMED =
             new Settlement(false, new BigDecimal("0.40"), new BigDecimal("0.30"));
 
+    /**
+     * The flagship: signed a while ago and paid into ever since. Every supplier is under contract
+     * rather than the first two, the couple has made three transfers against their package and
+     * still owes the balance, and the suppliers are part-paid at staggered depths — which is what
+     * an event's money actually looks like a year out, and what the payments tab is there to show.
+     */
+    private static final Settlement FLAGSHIP = new Settlement(false,
+            new BigDecimal("0.40"), new BigDecimal("0.35"), true,
+            List.of(new Instalment("deposit", "Booking deposit received", new BigDecimal("0.15")),
+                    new Instalment("second", "Second instalment received", new BigDecimal("0.12")),
+                    new Instalment("third", "Third instalment received", new BigDecimal("0.08"))),
+            List.of(new Instalment("deposit", "Bank transfer, deposit", new BigDecimal("0.40")),
+                    new Instalment("balance", "Bank transfer, second instalment", new BigDecimal("0.25"))));
+
     @Override
     public void run(String... args) {
+        var seeder = flagship.getIfAvailable();
+        UUID featured = seeder == null ? null
+                : seeder.flagship().map(EventProject::getId).orElse(null);
         for (EventProject event : events.findAllActive()) {
             if (event.getSelectedBudget() == null) continue;
             Settlement settlement = switch (event.getStage()) {
                 case COMPLETED -> COMPLETED;
-                case CONFIRMED -> CONFIRMED;
+                case CONFIRMED -> event.getId().equals(featured) ? FLAGSHIP : CONFIRMED;
                 case null, default -> null;
             };
             if (settlement == null) continue;
@@ -87,21 +119,32 @@ public class EventLedgerSeeder implements CommandLineRunner {
             if (line.getContractor() == null) continue;
             byContractor.computeIfAbsent(line.getContractor().id(), key -> new ArrayList<>()).add(line);
         }
+
+        // An event somebody has already billed by hand is not this seeder's to settle. Its own
+        // documents are keyed, so re-running over them is a no-op — but a ledger raised anywhere
+        // else carries different ids, and settling alongside it would bill the wedding twice.
+        var mine = new HashSet<UUID>();
+        mine.add(id("client", event.getId().toString()));
+        for (UUID contractor : byContractor.keySet()) mine.add(id("supplier", event.getId() + ":" + contractor));
+        boolean billedElsewhere = invoices.findByEventAndDeletionMarkFalse(event.getId()).stream()
+                .anyMatch(invoice -> !mine.contains(invoice.getId()));
+        if (billedElsewhere) return;
         // A wedding still to come has only started committing: the venue and the first suppliers are
         // booked, the rest is quoted and nothing more.
-        int commitments = settlement.delivered() ? byContractor.size()
+        int commitments = settlement.delivered() || settlement.commitAll() ? byContractor.size()
                 : Math.min(2, byContractor.size());
         int index = 0;
         for (var entry : byContractor.entrySet()) {
-            if (index++ >= commitments) break;
-            supplier(event, budget, entry.getKey(), entry.getValue(), settlement);
+            if (index >= commitments) break;
+            supplier(event, budget, entry.getKey(), entry.getValue(), settlement, index);
+            index++;
         }
 
         client(event, budget, quoted, settlement);
     }
 
     private void supplier(EventProject event, EventBudget budget, UUID contractor,
-            List<EventBudgetLine> lines, Settlement settlement) {
+            List<EventBudgetLine> lines, Settlement settlement, int position) {
         UUID invoiceId = id("supplier", event.getId() + ":" + contractor);
         var invoice = post(invoiceId, () -> {
             var value = new EventInvoice();
@@ -114,9 +157,22 @@ public class EventLedgerSeeder implements CommandLineRunner {
             return value;
         });
         if (invoice == null) return;
-        pay(id("supplier-payment", invoiceId.toString()), invoice,
-                share(invoice.getTotal(), settlement.supplierShare()),
-                settlement.delivered() ? "Bank transfer, final settlement" : "Bank transfer, deposit");
+        if (settlement.supplierSchedule().isEmpty()) {
+            pay(id("supplier-payment", invoiceId.toString()), invoice,
+                    share(invoice.getTotal(), settlement.supplierShare()),
+                    settlement.delivered() ? "Bank transfer, final settlement" : "Bank transfer, deposit");
+            return;
+        }
+        // Not every supplier is paid to the same depth. A deposit goes out when the contract is
+        // signed and the next instalment when that supplier's own milestone lands, so at any given
+        // moment half the roster is a payment ahead of the other half — which is the thing a
+        // payments tab is read for, and a roster paid uniformly would hide.
+        int instalments = position % 2 == 0 ? settlement.supplierSchedule().size() : 1;
+        for (int i = 0; i < instalments; i++) {
+            var instalment = settlement.supplierSchedule().get(i);
+            pay(id("supplier-payment:" + instalment.key(), invoiceId.toString()), invoice,
+                    share(invoice.getTotal(), instalment.share()), instalment.reference());
+        }
     }
 
     /**
@@ -138,9 +194,19 @@ public class EventLedgerSeeder implements CommandLineRunner {
             return value;
         });
         if (invoice == null) return;
-        pay(id("client-payment", invoiceId.toString()), invoice,
-                share(invoice.getTotal(), settlement.clientShare()),
-                settlement.delivered() ? "Received in full" : "Booking deposit received");
+        if (settlement.clientSchedule().isEmpty()) {
+            pay(id("client-payment", invoiceId.toString()), invoice,
+                    share(invoice.getTotal(), settlement.clientShare()),
+                    settlement.delivered() ? "Received in full" : "Booking deposit received");
+            return;
+        }
+        // A couple pays a wedding off in stages against one contract, so the balance owed is the
+        // number the client panel is really answering — and a single deposit line cannot show it
+        // shrinking.
+        for (var instalment : settlement.clientSchedule()) {
+            pay(id("client-payment:" + instalment.key(), invoiceId.toString()), invoice,
+                    share(invoice.getTotal(), instalment.share()), instalment.reference());
+        }
     }
 
     private static EventInvoiceLine copy(EventBudgetLine line) {
@@ -157,11 +223,16 @@ public class EventLedgerSeeder implements CommandLineRunner {
 
     /**
      * Save then post, as two transactions: the posting engine claims a row that is already
-     * committed, so a document written and posted inside one transaction is rejected. Returns null
-     * when the document already exists, which is what makes a restart a no-op.
+     * committed, so a document written and posted inside one transaction is rejected.
+     *
+     * <p>An invoice an earlier boot already posted is handed back rather than rebuilt, so payments
+     * still settle against it — a schedule added to this seeder after the invoice was written would
+     * otherwise never reach the events that already had one. Nothing is rewritten either way: the
+     * document is left exactly as it stands, and the payments are keyed and skip what exists. An
+     * invoice somebody deleted in the demo stays deleted and takes its payments with it.
      */
     private EventInvoice post(UUID id, java.util.function.Supplier<EventInvoice> build) {
-        if (invoices.findById(id).isPresent()) return null;
+        if (invoices.findById(id).isPresent()) return invoices.findActiveById(id).orElse(null);
         var invoice = build.get();
         if (invoice.getItems().isEmpty()) return null;
         invoices.save(invoice);
@@ -173,6 +244,17 @@ public class EventLedgerSeeder implements CommandLineRunner {
 
     private void pay(UUID id, EventInvoice invoice, BigDecimal amount, String reference) {
         if (amount.signum() <= 0 || payments.findById(id).isPresent()) return;
+        // Never transfer more than the invoice still has outstanding. An event settled by an older
+        // version of this seeder already carries payments of its own, and posting a schedule on top
+        // of them takes the invoice register negative — which fails the whole boot rather than the
+        // one payment. What is left after the earlier boots is what this one pays.
+        BigDecimal settled = payments.findByInvoiceAndDeletionMarkFalse(invoice.getId()).stream()
+                .map(EventPayment::getAmount)
+                .filter(Objects::nonNull)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal outstanding = invoice.getTotal().subtract(settled);
+        if (outstanding.signum() <= 0) return;
+        amount = amount.min(outstanding);
         var payment = new EventPayment();
         payment.setId(id);
         payment.setInvoice(Ref.of(EventInvoice.class, invoice.getId()));

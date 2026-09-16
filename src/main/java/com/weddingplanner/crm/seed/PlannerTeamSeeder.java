@@ -46,12 +46,15 @@ public class PlannerTeamSeeder implements CommandLineRunner {
     private final ContactRepository contacts;
     private final EventProjectRepository events;
     private final EventPartyRepository parties;
+    private final org.springframework.beans.factory.ObjectProvider<FlagshipEventSeeder> flagship;
 
     public PlannerTeamSeeder(ContactRepository contacts, EventProjectRepository events,
-            EventPartyRepository parties) {
+            EventPartyRepository parties,
+            org.springframework.beans.factory.ObjectProvider<FlagshipEventSeeder> flagship) {
         this.contacts = contacts;
         this.events = events;
         this.parties = parties;
+        this.flagship = flagship;
     }
 
     @Override
@@ -65,6 +68,18 @@ public class PlannerTeamSeeder implements CommandLineRunner {
             int seat = i % TEAM.size();
             join(projects.get(i), roster.get(seat).getId(), TEAM.get(seat).scope());
         }
+
+        // The wedding the demo is built around gets the whole agency, which is what a wedding of
+        // that size actually takes: one planner owning it, a producer, a designer, someone on site
+        // and someone chasing the money. Everywhere else one name is right — a book where every
+        // wedding is all-hands describes an agency with one client.
+        var seeder = flagship.getIfAvailable();
+        if (seeder == null) return;
+        seeder.flagship().ifPresent(event -> {
+            for (int seat = 0; seat < TEAM.size(); seat++) {
+                join(event, roster.get(seat).getId(), TEAM.get(seat).scope());
+            }
+        });
     }
 
     /** One card per planner, keyed by name so a restart neither duplicates nor overwrites edits. */
