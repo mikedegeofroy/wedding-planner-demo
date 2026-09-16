@@ -41,7 +41,10 @@ dependencies {
     // Estimates leave this app as the spreadsheet clients already work in, so the workbook is a
     // real .xlsx with formats and column widths rather than a CSV renamed.
     implementation("org.apache.poi:poi-ooxml:5.5.1")
+    // Both drivers ship: H2 is the file database a local run seeds into, Postgres is what a
+    // deployed tenant is handed. Which one is used follows the URL, so neither is pinned here.
     runtimeOnly("com.h2database:h2")
+    runtimeOnly("org.postgresql:postgresql")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

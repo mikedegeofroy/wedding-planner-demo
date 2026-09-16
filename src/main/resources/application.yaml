@@ -2,9 +2,12 @@ spring:
   application:
     name: planner
   datasource:
-    url: jdbc:h2:file:./data/wedding-planner;DB_CLOSE_DELAY=-1
-    driver-class-name: org.h2.Driver
-    username: sa
+    # The deployment supplies these; the defaults are the local H2 file. No driver-class-name on
+    # purpose — pinning it to H2 is what made a tenant pod crash-loop against its Postgres URL,
+    # since the driver then contradicts the URL it is handed.
+    url: ${SPRING_DATASOURCE_URL:jdbc:h2:file:./data/wedding-planner;DB_CLOSE_DELAY=-1}
+    username: ${SPRING_DATASOURCE_USERNAME:sa}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
 
 server:
   error:
