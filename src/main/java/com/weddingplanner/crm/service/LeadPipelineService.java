@@ -27,12 +27,15 @@ public class LeadPipelineService {
     private final UiEventPublisher events;
     private final PipelineStageService stages;
 
+    private final LeadIndex index;
+
     public LeadPipelineService(LeadInquiryRepository leads, ConversationRepository conversations,
-            UiEventPublisher events, PipelineStageService stages) {
+            UiEventPublisher events, PipelineStageService stages, LeadIndex index) {
         this.leads = leads;
         this.conversations = conversations;
         this.events = events;
         this.stages = stages;
+        this.index = index;
     }
 
     /**
@@ -40,24 +43,19 @@ public class LeadPipelineService {
      * one along the pipeline, so an older lost inquiry can't drag a booked couple backwards.
      */
     public Map<UUID, Ref<PipelineStage>> stageByContact() {
-        var byContact = new HashMap<UUID, Ref<PipelineStage>>();
-        for (LeadInquiry lead : leads.findAllActive()) {
-            if (lead.getContact() == null || lead.getStage() == null) continue;
-            byContact.merge(lead.getContact().id(), lead.getStage(),
-                    (current, incoming) -> stages.positionOf(incoming) > stages.positionOf(current)
-                            ? incoming : current);
-        }
-        return byContact;
+        // The Clients folders are the stages, so filing one page of conversations asks this for
+        // every couple at once. It is two columns of every inquiry and nothing else, which is what
+        // the index reads — loading the documents to answer it cost a query per inquiry.
+        return index.current().stageByContact();
     }
 
     /** The inquiry a conversation's stage moves, or empty when that couple has none yet. */
     public Optional<LeadInquiry> inquiryFor(UUID conversationId) {
         return conversations.findActiveById(conversationId)
                 .map(conversation -> conversation.getCustomer())
-                .flatMap(customer -> customer == null ? Optional.empty() : leads.findAllActive().stream()
-                        .filter(lead -> lead.getContact() != null && customer.equals(lead.getContact().id()))
-                        .max(java.util.Comparator.comparingInt(lead -> lead.getStage() == null
-                                ? -1 : stages.positionOf(lead.getStage()))));
+                .flatMap(customer -> customer == null ? Optional.empty()
+                        : Optional.ofNullable(index.current().leadByContact().get(customer))
+                                .flatMap(leads::findActiveById));
     }
 
     /**
@@ -69,6 +67,8 @@ public class LeadPipelineService {
         return inquiryFor(conversationId).map(lead -> {
             lead.setStage(stage);
             var saved = leads.save(lead);
+            // The stage just moved, so the memoised index is now behind the database.
+            index.invalidate();
             // The Clients inbox folders ARE the stages, so a move re-files the conversation. The CRM
             // only republishes its inbox for conversation/contact changes — an inquiry edit is ours
             // to announce.

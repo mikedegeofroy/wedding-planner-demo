@@ -24,6 +24,7 @@ import com.weddingplanner.crm.repository.ContactRepository;
 import com.weddingplanner.crm.repository.LeadInquiryRepository;
 import com.weddingplanner.crm.service.ContactFolderIndex;
 import com.weddingplanner.crm.service.LeadFacts;
+import com.weddingplanner.crm.service.LeadIndex;
 import com.weddingplanner.crm.service.LeadPipelineService;
 import com.weddingplanner.crm.service.PipelineStageService;
 import org.springframework.context.annotation.*;
@@ -69,11 +70,11 @@ public class CrmConfiguration {
      */
     @Bean
     CrmCustomerBinding<Contact> plannerContacts(ContactRepository contacts, LeadInquiryRepository leads,
-            PipelineStageService stages) {
+            PipelineStageService stages, LeadIndex index) {
         // One panel read asks for ten fields, and every one of them wants the couple's inquiry.
         // Resolving them through a shared, briefly-memoised lookup is one scan of the inquiries per
         // panel rather than ten, while a stage moved a moment ago still shows on the next breath.
-        var lead = LeadFacts.live(leads, stages);
+        var lead = LeadFacts.live(leads, index);
         var catalog = new CrmCatalogBinding<>(Contact.class, contacts::findActiveById)
                 .field("email", "Email", "email", Contact::getEmail)
                 .field("phone", "Phone", "phone", Contact::getPhone)

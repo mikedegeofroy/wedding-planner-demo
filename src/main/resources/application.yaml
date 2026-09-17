@@ -8,6 +8,12 @@ spring:
     url: ${SPRING_DATASOURCE_URL:jdbc:h2:file:./data/wedding-planner;DB_CLOSE_DELAY=-1}
     username: ${SPRING_DATASOURCE_USERNAME:sa}
     password: ${SPRING_DATASOURCE_PASSWORD:}
+    hikari:
+      # An inbox read holds its connection for the whole page, and the screen fires several at once
+      # while a workspace is switched. Ten was enough to leave requests queueing behind each other
+      # and then failing outright on "Failed to obtain JDBC Connection"; the pool is the queue, and
+      # it was shorter than the traffic. Postgres is configured for far more than this.
+      maximum-pool-size: ${SPRING_DATASOURCE_POOL_SIZE:20}
 
 server:
   error:

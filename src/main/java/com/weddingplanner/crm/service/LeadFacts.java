@@ -31,6 +31,8 @@ public final class LeadFacts {
      */
     public static Map<UUID, LeadInquiry> furthestByContact(LeadInquiryRepository leads,
             PipelineStageService stages) {
+        // Every inquiry, as documents. Only for a caller that genuinely needs them all — a single
+        // couple's inquiry is a LeadIndex lookup and one read, not a scan of the whole book.
         var furthest = new HashMap<UUID, LeadInquiry>();
         for (LeadInquiry lead : leads.findAllActive()) {
             if (lead.getContact() == null) continue;
@@ -47,16 +49,23 @@ public final class LeadFacts {
      * the inquiries ten times over. A stage moved a moment ago still shows on the next breath.
      */
     public static Function<Contact, Optional<LeadInquiry>> live(LeadInquiryRepository leads,
-            PipelineStageService stages) {
-        var cached = new AtomicReference<Map.Entry<Long, Map<UUID, LeadInquiry>>>();
+            LeadIndex index) {
+        // Which inquiry wins is decided by the index, in one query over three columns. Only the
+        // couples actually on screen have their inquiry loaded, and each is loaded once however
+        // many of the ten fields ask for it.
+        var loaded = new java.util.concurrent.ConcurrentHashMap<UUID, Optional<LeadInquiry>>();
+        var cached = new AtomicReference<Map.Entry<Long, LeadIndex.Snapshot>>();
         return contact -> {
             long now = System.nanoTime();
             var snapshot = cached.get();
             if (snapshot == null || now - snapshot.getKey() > 1_000_000_000L) {
-                snapshot = Map.entry(now, furthestByContact(leads, stages));
+                snapshot = Map.entry(now, index.current());
                 cached.set(snapshot);
+                loaded.clear();
             }
-            return Optional.ofNullable(snapshot.getValue().get(contact.getId()));
+            UUID winner = snapshot.getValue().leadByContact().get(contact.getId());
+            if (winner == null) return Optional.empty();
+            return loaded.computeIfAbsent(winner, leads::findActiveById);
         };
     }
 
