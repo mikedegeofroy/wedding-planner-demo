@@ -8,7 +8,7 @@ type ScenarioColumn={id:string;label:string;scenario:string|null;revision:number
 type ScenarioRow={category:string;article:string;details:string|null;phase:string;kind:string;
  amounts:(number|string|null)[];states:(string|null)[]};
 type Scenarios={scenarios:ScenarioColumn[];rows:ScenarioRow[];commentsDiffer:boolean};
-type EventHeader={id:string;name:string;code:string;client:string;clientId:string|null;stage:string;startDate:string|null;endDate:string|null;location:string|null;guests:number|null;currency:string;notes:string|null;crew:Crew[]};
+type EventHeader={id:string;name:string;code:string;client:string;clientId:string|null;stage:string;startDate:string|null;endDate:string|null;location:string|null;guests:number|null;currency:string;notes:string|null;crew:Crew[];shared?:boolean};
 type Commitment={invoiceId:string;number:string;counterparty:string;details:string|null;amount:number;paid:number;posted:boolean};
 type Line={id:string|null;category:string;article:string;articleId:string|null;phase:string|null;phaseLabel:string;details:string|null;contractor:string|null;contractorId:string|null;state:string|null;stateLabel:string;kind:string|null;kindLabel:string;quantity:number|null;unitPrice:number|null;amount:number|null;committed:number;paid:number;budgeted:boolean;commitments:Commitment[]};
 type Category={category:string;estimated:number;committed:number;paid:number;unpriced:number;lines:Line[]};
@@ -655,6 +655,21 @@ function EventWorkspace({id}:{id:string|undefined}){
  /** Read another scenario: the cards, the commit picker and the breakdown all follow this one id. */
  const choose=(budgetId:string)=>{if(budgetId===viewing.current)return;viewing.current=budgetId;setSelected(budgetId);setLineId('');void load();};
  const exporting=async(path:string,fallback:string)=>{setBusy(true);setError('');try{await download(path,fallback);}catch(e){setError((e as Error).message);}finally{setBusy(false);}};
+ /**
+  * Open the couple's own page. The tab is opened before the link is minted — a window.open after an
+  * await is a popup the browser blocks — and the link is copied too, since it is usually sent on.
+  */
+ const shareClientPage=async()=>{
+  const tab=window.open('about:blank','_blank');
+  setBusy(true);setError('');
+  try{
+   const {url}=await request(`/${id}/share`,{});
+   const full=new URL(url,window.location.origin).toString();
+   if(tab)tab.location.href=full;else window.open(full,'_blank');
+   try{await navigator.clipboard.writeText(full);}catch{/* the tab is open either way */}
+   await load();
+  }catch(e){tab?.close();setError((e as Error).message);}finally{setBusy(false);}
+ };
  const run=async(action:()=>Promise<void>)=>{setBusy(true);setError('');try{await action();await load();}catch(e){setError((e as Error).message);}finally{setBusy(false);}};
  if(!id)return <p className="p-6 text-sm text-muted-foreground">Open an event to see its workspace.</p>;
  if(!data)return <p className="p-6 text-sm text-muted-foreground" role={error?'alert':undefined}>{error||'Loading event…'}</p>;
@@ -705,6 +720,16 @@ function EventWorkspace({id}:{id:string|undefined}){
     <Button size="toolbar" variant="subtle" onClick={()=>openRecord('catalogs','EventProjects',e.id)}>
      <Icon name="pencil" size={16}/>Edit event
     </Button>
+    {/* The couple's own page: dates, venue, the chosen estimate and their payments — no costs,
+        margins or supplier names. Opens it and copies the link to send on. */}
+    <Button size="toolbar" variant="subtle" disabled={!can} title="Open the client's page and copy its link"
+      onClick={()=>void shareClientPage()}>
+     <Icon name="external-link" size={16}/>Client page
+    </Button>
+    {e.shared&&<Button size="toolbar" variant="subtle" disabled={!can} title="Every link sent so far stops working"
+      onClick={()=>void run(async()=>{await request(`/${id}/share/revoke`,{});})}>
+     <Icon name="link-2-off" size={16}/>Stop sharing
+    </Button>}
    </div>
   </header>
 

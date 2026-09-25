@@ -61,7 +61,8 @@ public class EventWorkspaceController {
     "client",contact(event.getClient()),"clientId",event.getClient()==null?null:event.getClient().id(),
     "stage",event.getStage(),"startDate",event.getStartDate(),"endDate",event.getEndDate(),
     "location",event.getLocation(),"guests",event.getGuests(),"currency",event.getCurrency(),
-    "notes",event.getNotes(),"crew",crew);
+    "notes",event.getNotes(),"crew",crew,
+    "shared",event.getShareToken()!=null&&!event.getShareToken().isBlank());
   return row("event",header,"categories",categoryRows,"breakdownOf",breakdown.budget()==null?null:breakdown.budget().getId(),"selectedBudget",event.getSelectedBudget()==null?null:event.getSelectedBudget().id(),"canSeeMargin",canSeeMargin(p),"canWrite",!readOnly&&access.canWrite(p,"catalog","EventProjects")&&access.canWrite(p,"document","EventInvoices")&&access.canWrite(p,"document","EventPayments"),"budgets",budgetRows,"invoices",invoiceRows,"payments",pay.stream().map(v->row("id",v.getId(),"number",v.getNumber(),"date",v.getDate(),"direction",v.getDirection(),"amount",v.getAmount(),"posted",v.isPosted(),"reference",v.getReference())).toList(),"clientBilled",sumInvoices(inv,InvoiceDirection.CLIENT),"supplierBilled",sumInvoices(inv,InvoiceDirection.SUPPLIER),"received",sumPayments(pay,InvoiceDirection.CLIENT),"paid",sumPayments(pay,InvoiceDirection.SUPPLIER));
  }
  private BigDecimal sumInvoices(List<EventInvoice> list,InvoiceDirection d){return list.stream().filter(i->i.isPosted()&&i.getDirection()==d).map(EventInvoice::getTotal).reduce(BigDecimal.ZERO,BigDecimal::add);}
@@ -79,6 +80,26 @@ public class EventWorkspaceController {
  public record Selection(UUID budget){}
  @PostMapping("/{id}/budget") @Transactional
  public Map<String,Object> select(@PathVariable UUID id,@RequestBody Selection choice,Principal p){write(p,"catalog","EventProjects");var event=events.findActiveById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));var budget=budgets.findActiveById(choice.budget()).filter(b->same(b.getEvent(),id)).orElseThrow(()->new ResponseStatusException(HttpStatus.BAD_REQUEST,"Choose this event's estimate"));event.setSelectedBudget(Ref.of(EventBudget.class,budget.getId()));events.save(event);return row("id",id);}
+ /**
+  * The couple's own page for this event. The first call mints the link; later calls hand back the
+  * same one, so a link already sent keeps working. It shows what a couple may see — dates, venue,
+  * the chosen estimate and what they have paid — never costs, margins or supplier invoices.
+  */
+ @PostMapping("/{id}/share") @Transactional
+ public Map<String,Object> share(@PathVariable UUID id,Principal p){
+  write(p,"catalog","EventProjects");
+  var event=events.findActiveById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
+  if(event.getShareToken()==null||event.getShareToken().isBlank()){event.setShareToken(ClientEventPageController.newToken());events.save(event);}
+  return row("url","/client/event/"+event.getShareToken());
+ }
+ /** Retire every link to the couple's page handed out so far; the next share mints a fresh one. */
+ @PostMapping("/{id}/share/revoke") @Transactional
+ public Map<String,Object> revoke(@PathVariable UUID id,Principal p){
+  write(p,"catalog","EventProjects");
+  var event=events.findActiveById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
+  event.setShareToken(null);events.save(event);
+  return row("id",id);
+ }
  /**
   * Copy an estimate as the next version of the same scenario. A revision is how a quote moves —
   * the venue re-prices, the couple cuts the guest list — so the original stays as it was sent and

@@ -17,6 +17,7 @@ import com.weddingplanner.crm.events.domain.*;
  f.field(EventProject::getGuests).order(31).width("half");
  f.field(EventProject::getSelectedBudget).hideInForm().hideInDetail();
  f.field(EventProject::getCurrency).hideInForm().hideInDetail();
+ f.field(EventProject::getShareToken).hideInForm().hideInDetail();
  f.field(EventProject::getNotes).order(50).widget("textarea");
  f.relatedList("participants",EventParty.class).via(EventParty::getEvent).display(EventParty::getContact).columns(EventParty::getRole,EventParty::getScope).label("Participants");
 

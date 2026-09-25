@@ -23,6 +23,11 @@ public class EventProject extends CatalogObject implements Validated {
     @Attribute(displayName="Currency",length=3) private String currency = "EUR";
     @Attribute(displayName="Budget scenario") private Ref<EventBudget> selectedBudget;
     @Attribute(displayName="Notes",length=4000) private String notes;
+    /**
+     * The secret in the couple's link to their own page ({@code /client/event/<token>}). Blank means
+     * the event was never shared; clearing it revokes every link handed out so far.
+     */
+    @Attribute(displayName="Client link token",length=64) private String shareToken;
     public Ref<Contact> getClient() { return client; }
     public void setClient(Ref<Contact> value) { client=value; }
     public LocalDate getStartDate() { return startDate; }
@@ -41,6 +46,8 @@ public class EventProject extends CatalogObject implements Validated {
     public void setSelectedBudget(Ref<EventBudget> value) { selectedBudget=value; }
     public String getNotes() { return notes; }
     public void setNotes(String value) { notes=value; }
+    public String getShareToken() { return shareToken; }
+    public void setShareToken(String value) { shareToken=value; }
 
     @Override public List<BusinessRule> rules() { return List.of(
         new BusinessRule("dates","End date must not precede start date",()->startDate==null||endDate==null||!endDate.isBefore(startDate)),
