@@ -445,7 +445,7 @@ public class LeadInquiry extends DocumentObject implements BeforeWriteHandler {
         return ResponseBand.OVER_24_HOURS;
     }
 
-    private static BudgetBand classifyBudget(BigDecimal value) {
+    public static BudgetBand classifyBudget(BigDecimal value) {
         if (value == null) return BudgetBand.UNKNOWN;
         if (value.compareTo(TARGET_THRESHOLD) < 0) return BudgetBand.BELOW_300K;
         if (value.compareTo(VIP_THRESHOLD) < 0) return BudgetBand.FROM_300K_TO_499K;

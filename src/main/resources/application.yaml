@@ -26,6 +26,19 @@ server:
 planner:
   events:
     demo: true
+  # Jev (TypeSafe) reads a stranger's first message and files it. The key never lives here: without
+  # one the classifier answers with keyword rules, and the chat card says which of the two it was.
+  jev:
+    api-key: ${TYPESAFE_API_KEY:}
+    model: ${TYPESAFE_MODEL:jev-latest}
+  # POST /demo-hooks/inbound {"scenario":"couple-como"} plays a new sender writing in. Without a
+  # token only this machine may call it; set one to trigger it from a phone or another laptop.
+  demo-hooks:
+    enabled: ${PLANNER_DEMO_HOOKS_ENABLED:true}
+    # Open to any device that can reach the app, no token. Fine on a laptop for a live demo; turn it
+    # off (PLANNER_DEMO_HOOKS_OPEN=false) anywhere public — every call writes a chat and spends Jev credits.
+    open: ${PLANNER_DEMO_HOOKS_OPEN:true}
+    token: ${PLANNER_DEMO_HOOK_TOKEN:}
 
 onno:
   ui:
@@ -39,6 +52,8 @@ onno:
     enabled: true
   auth:
     mode: in-memory
+    # Replaces the default list, so the login path stays. /demo-hooks guards itself with a token.
+    csrf-ignored-paths: [/api/auth/login, /demo-hooks/**]
     demo:
       auto-login-username: demo@weddingplanner.local
     session:

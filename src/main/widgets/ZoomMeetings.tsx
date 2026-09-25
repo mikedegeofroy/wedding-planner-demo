@@ -282,7 +282,7 @@ function ScheduleZoom({ context }: ExtensionProps) {
     } catch (e) { setError((e as Error).message); } finally { setSending(false); }
   };
 
-  if (!conversationId || !context.permissions.canWrite) return null;
+  if (!conversationId || !context.permissions.canReply) return null;
   return (
     <Popover open={open} onOpenChange={(value: boolean) => { if (busy || sending) return; setOpen(value); if (value) reset(); }}>
       <PopoverTrigger asChild>

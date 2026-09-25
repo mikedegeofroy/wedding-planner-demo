@@ -253,10 +253,15 @@ public class CrmConfiguration {
      * and a second button next to it offering to paste a meeting URL by hand is a different answer
      * to the same question. Logging a call that happened somewhere else is not lost: the planner's
      * own button carries it, writing the same internal event through the same endpoint.
+     *
+     * <p><i>Open contact</i> ({@code edit}) goes too: the card is already in the chat's side panel,
+     * and what a planner wants from a client's chat is the wedding, which {@code OpenEvent.tsx}
+     * offers in its place. Switching {@code edit} off also clears {@code permissions.canWrite} for
+     * header extensions, so the planner's own buttons read {@code canReply} instead.</p>
      */
     private static CrmWorkspaceService.Config plannerActions(CrmWorkspaceService.Config config) {
         return config.withActions(config.actions().stream()
-                .map(action -> action.key().equals("logActivity")
+                .map(action -> action.key().equals("logActivity") || action.key().equals("edit")
                         ? new CrmWorkspaceService.Action(action.key(), action.label(), false) : action)
                 .toList());
     }

@@ -66,7 +66,7 @@ function LogCall({ context }: ExtensionProps) {
     } catch (e) { setError((e as Error).message); } finally { setBusy(false); }
   };
 
-  if (!conversationId || !customerId || !context.permissions.canWrite) return null;
+  if (!conversationId || !customerId || !context.permissions.canReply) return null;
   return (
     <Popover open={open} onOpenChange={(value: boolean) => { if (!busy) { setOpen(value); setError(""); } }}>
       <PopoverTrigger asChild>

@@ -18,7 +18,12 @@ public enum InboxFolder {
     @EnumLabel(value = "Partners", color = "#6366F1") PARTNERS("Partners", "handshake"),
     @EnumLabel(value = "Venues", color = "#0EA5E9") VENUES("Venues", "landmark"),
     @EnumLabel(value = "Competitors", color = "#64748B") COMPETITORS("Competitors", "swords"),
-    @EnumLabel(value = "Team", color = "#8B5CF6") TEAM("Team", "users");
+    @EnumLabel(value = "Team", color = "#8B5CF6") TEAM("Team", "users"),
+    /**
+     * A first message nobody has sorted yet, or one the classifier would not commit to. It keeps a
+     * new chat out of Clients until something has decided it belongs there.
+     */
+    @EnumLabel(value = "Needs review", color = "#F97316") UNSORTED("Needs review", "inbox");
 
     private final String label;
     private final String glyph;

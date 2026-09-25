@@ -58,7 +58,7 @@ function StageControl({ context }: ExtensionProps) {
   if (error) return <span role="alert" className="text-xs text-destructive">{error}</span>;
   if (!pipeline) return null;
   const { current, next, stages } = pipeline;
-  const writable = !!context.execute && context.permissions.canWrite;
+  const writable = !!context.execute && context.permissions.canReply;
   // The current stage IS the control: its own colour, filled, the way the stage pills read
   // everywhere else in the app.
   const tint: CSSProperties | undefined = current?.color
